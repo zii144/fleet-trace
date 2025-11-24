@@ -90,10 +90,10 @@ export function ServiceCompletionModal({
             <p className="text-sm text-blue-800">
               📧 如有任何問題，請聯繫：{" "}
               <a
-                href="mailto:support@bike-life.net"
+                href="mailto:support@taxi-life.net"
                 className="font-medium underline"
               >
-                support@bike-life.net
+                support@taxi-life.net
               </a>
             </p>
           </div>
@@ -115,4 +115,3 @@ export function ServiceCompletionModal({
     </Dialog>
   );
 }
-

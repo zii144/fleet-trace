@@ -1018,10 +1018,10 @@ export default function LoginPage() {
         <p className="text-sm text-white">
           需要協助？請聯繫我們：{" "}
           <a
-            href="mailto:support@bike-life.net"
+            href="mailto:support@taxi-life.net"
             className="text-blue-200 underline font-medium"
           >
-            support@bike-life.net
+            support@taxi-life.net
           </a>
         </p>
       </footer>

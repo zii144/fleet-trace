@@ -5,7 +5,7 @@ export const taoyuanTaxiServiceQualitySurvey: QuestionnaireTemplate = {
   title: "桃園市計程車服務品質評鑑調查",
   description:
     "本評鑑調查目的在了解您對桃園市計程車服務品質的感受及意見，做為後續服務改善參考，謝謝！",
-  banner: "/banner-video/cycling-survey.mp4",
+  banner: "/banner-video/tao-yuan.mp4",
   version: "1.0.0",
   organize: "桃園市政府",
   isRepeatable: true,

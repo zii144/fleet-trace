@@ -5,7 +5,7 @@ export const kaohsiungTaxiServiceQualitySurvey: QuestionnaireTemplate = {
   title: "高雄市計程車服務品質評鑑調查",
   description:
     "本評鑑調查目的在了解您對高雄市計程車服務品質的感受及意見，做為後續服務改善參考，謝謝！",
-  banner: "/banner-video/cycling-survey.mp4",
+  banner: "/banner-video/kaoh-siung.mp4",
   version: "1.0.0",
   organize: "高雄市政府",
   isRepeatable: true,

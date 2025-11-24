@@ -31,14 +31,14 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bike-life.net"),
-  title: "乘跡｜騎行體驗分享平台",
+  title: "乘跡｜計程車服務品質評核平台",
   description:
-    "乘跡，台灣首創的騎行體驗分享平台。結合數據分析與問卷回饋，讓每一段旅程都成為台灣單車文化的軌跡。",
+    "乘跡，計程車服務品質評核平台。結合數據分析與問卷回饋，提升計程車服務品質。",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "乘跡｜騎行體驗分享平台",
+    title: "乘跡｜計程車服務品質評核平台",
   },
   formatDetection: {
     telephone: false,
@@ -46,10 +46,10 @@ export const metadata: Metadata = {
   // Enhanced Open Graph for social media sharing
   openGraph: {
     type: "website",
-    siteName: "乘跡｜騎行體驗分享平台",
-    title: "乘跡｜騎行體驗分享平台 - 台灣單車文化軌跡",
+    siteName: "乘跡｜計程車服務品質評核平台",
+    title: "乘跡｜計程車服務品質評核平台",
     description:
-      "乘跡，台灣首創的騎行體驗分享平台。結合數據分析與問卷回饋，讓每一段旅程都成為台灣單車文化的軌跡。探索台灣最美的單車路線，分享你的騎行故事。",
+      "乘跡，計程車服務品質評核平台。結合數據分析與問卷回饋，提升計程車服務品質。",
     url: "https://bike-life.net",
     locale: "zh_TW",
     images: [
@@ -74,9 +74,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@bikelife_tw",
     creator: "@bikelife_tw",
-    title: "乘跡｜騎行體驗分享平台 - 台灣單車文化軌跡",
+    title: "乘跡｜計程車服務品質評核平台",
     description:
-      "乘跡，台灣首創的騎行體驗分享平台。結合數據分析與問卷回饋，讓每一段旅程都成為台灣單車文化的軌跡。",
+      "乘跡，計程車服務品質評核平台。結合數據分析與問卷回饋，提升計程車服務品質。",
     images: ["/social-share-banner.png"],
   },
   // Additional social media meta tags
@@ -86,13 +86,13 @@ export const metadata: Metadata = {
     "instagram:creator": "@bikelife_tw",
     "linkedin:owner": "your-linkedin-company-id", // Replace with your LinkedIn Company ID
     // LINE-specific optimizations
-    "line:title": "乘跡｜騎行體驗分享平台 - 台灣單車文化軌跡",
+    "line:title": "乘跡｜計程車服務品質評核平台",
     "line:description":
-      "乘跡，台灣首創的騎行體驗分享平台。結合數據分析與問卷回饋，讓每一段旅程都成為台灣單車文化的軌跡。",
+      "乘跡，計程車服務品質評核平台。結合數據分析與問卷回饋，提升計程車服務品質。",
     "line:image": "https://bike-life.net/social-share-banner.png",
     "line:url": "https://bike-life.net",
     // Additional LINE optimizations
-    "line:site_name": "乘跡｜騎行體驗分享平台",
+    "line:site_name": "乘跡｜計程車服務品質評核平台",
     "line:type": "website",
     // WhatsApp Business API (if applicable)
     "whatsapp:business": "your-whatsapp-business-id",
@@ -148,6 +148,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="msapplication-tap-highlight" content="no" />
 
+        <link rel="apple-touch-icon" href="/icon-192x192.png" />
         <link
           rel="icon"
           type="image/png"

@@ -567,7 +567,7 @@ export default function LoginPage() {
       <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative">
         <Banner
           className="absolute top-0 left-0 w-full h-full -z-10"
-          backgroundVideo="/dynamic-background/lady-bike-grass.mp4"
+          backgroundVideo="/dynamic-background/landing-bg.mp4"
         />
         <Card className="w-full max-w-2xl rounded-2xl" glass animate>
           <CardContent className="text-center py-12">
@@ -583,12 +583,12 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative">
       <Banner
         className="absolute top-0 left-0 w-full h-full -z-10"
-        backgroundVideo="/dynamic-background/lady-bike-grass.mp4"
+        backgroundVideo="/dynamic-background/landing-bg.mp4"
       />
       <Card className="w-full max-w-2xl rounded-2xl" glass animate>
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold text-gray-800">
-            乘跡｜騎行體驗分享平台
+            乘跡｜計程車服務品質評核平台
           </CardTitle>
           <CardDescription>登入或註冊以存取您的體驗</CardDescription>
         </CardHeader>

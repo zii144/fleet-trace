@@ -42,7 +42,7 @@ export function AppFooter({
               <div>
                 <h3 className="font-semibold text-foreground">乘跡</h3>
                 <p className="text-xs text-muted-foreground">
-                  騎行體驗分享平台
+                  計程車服務品質評核平台
                 </p>
               </div>
             </div>
@@ -66,8 +66,8 @@ export function AppFooter({
             )}
 
             <p className="text-xs text-muted-foreground leading-relaxed">
-              台灣首創的騎行體驗分享平台，結合數據分析與問卷回饋，
-              讓每一段旅程都成為台灣單車文化的軌跡。
+              計程車服務品質評核平台，結合數據分析與問卷回饋，
+              提升計程車服務品質。
             </p>
           </div>
 

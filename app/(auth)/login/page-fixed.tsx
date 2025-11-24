@@ -96,7 +96,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">
-            乘跡｜騎行體驗分享平台
+            乘跡｜計程車服務品質評核平台
           </CardTitle>
           <CardDescription>登入以存取您的體驗</CardDescription>
         </CardHeader>

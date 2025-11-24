@@ -56,7 +56,7 @@ export function generateSocialMediaMeta(config: SocialMediaMetaConfig): Metadata
     publisher: '乘跡',
     openGraph: {
       type,
-      siteName: '乘跡｜騎行體驗分享平台',
+      siteName: '乘跡｜計程車服務品質評核平台',
       title,
       description,
       url: fullUrl,
@@ -93,7 +93,7 @@ export function generateSocialMediaMeta(config: SocialMediaMetaConfig): Metadata
       'line:description': description,
       'line:image': fullImageUrl,
       'line:url': fullUrl,
-      'line:site_name': '乘跡｜騎行體驗分享平台',
+      'line:site_name': '乘跡｜計程車服務品質評核平台',
       'line:type': type,
       // WhatsApp Business API (if applicable)
       'whatsapp:business': process.env.NEXT_PUBLIC_WHATSAPP_BUSINESS_ID || 'your-whatsapp-business-id',
@@ -143,7 +143,7 @@ export function generateLINEMeta(config: SocialMediaMetaConfig): Metadata {
     publisher: '乘跡',
     openGraph: {
       type,
-      siteName: '乘跡｜騎行體驗分享平台',
+      siteName: '乘跡｜計程車服務品質評核平台',
       title,
       description,
       url: fullUrl,
@@ -172,7 +172,7 @@ export function generateLINEMeta(config: SocialMediaMetaConfig): Metadata {
       'line:description': description,
       'line:image': fullImageUrl,
       'line:url': fullUrl,
-      'line:site_name': '乘跡｜騎行體驗分享平台',
+      'line:site_name': '乘跡｜計程車服務品質評核平台',
       'line:type': type,
       // Additional LINE-specific tags
       'line:locale': 'zh_TW',
@@ -192,8 +192,8 @@ export function generateLINEMeta(config: SocialMediaMetaConfig): Metadata {
  */
 export const pageMetaConfigs = {
   home: {
-    title: '乘跡｜騎行體驗分享平台 - 台灣單車文化軌跡',
-    description: '乘跡，台灣首創的騎行體驗分享平台。結合數據分析與問卷回饋，讓每一段旅程都成為台灣單車文化的軌跡。探索台灣最美的單車路線，分享你的騎行故事。',
+    title: '乘跡｜計程車服務品質評核平台',
+    description: '乘跡，計程車服務品質評核平台。結合數據分析與問卷回饋，提升計程車服務品質。',
     image: '/social-share-banner.png',
     tags: ['首頁', '平台介紹'],
   },

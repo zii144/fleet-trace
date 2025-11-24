@@ -1,0 +1,188 @@
+import type { QuestionnaireTemplate } from "./types"
+
+export const trainServiceUsageSurvey2025: QuestionnaireTemplate = {
+    id: "train-service-usage-survey-2025",
+    title: "「兩鐵列車服務」整體性使用情況調查問卷",
+    description: "本問卷旨在收集使用兩鐵列車服務的乘客對於服務質素、設施、班次等方面的意見和建議，以便進一步提升服務質素。",
+    version: "1.0.0",
+    organize: "交通部運輸研究所",
+    createdAt: "2025-07-20",
+    updatedAt: "2025-07-20",
+    sections: [
+    {
+      id: "train-service-a",
+      title: "兩鐵列車服務A",
+      questions: [
+        {
+          id: "train-used",
+          type: "radio",
+          label: "請問您是否曾使用「人車同行」的兩鐵列車服務？",
+          required: true,
+          options: ["是", "否"],
+        },
+      ],
+    },
+    {
+      id: "train-service-b",
+      title: "兩鐵列車服務B",
+      questions: [
+        {
+          id: "train-unused-reason",
+          type: "checkbox-text",
+          label: "請問您未曾使用兩鐵列車服務的原因為何？",
+          required: true,
+          options: ["訂不到票", "不知有此服務", "班次不好搭配", "沒有需求", "其他"],
+          textLabel: "其他原因",
+          textPlaceholder: "請說明其他未使用的原因",
+          textMinLength: 3,
+          textMaxLength: 100,
+          conditional: {
+            dependsOn: "train-used",
+            showWhen: "否",
+          },
+        },
+      ],
+    },
+    {
+      id: "train-service-c",
+      title: "兩鐵列車服務C",
+      questions: [
+        {
+          id: "train-mode",
+          type: "radio",
+          label: "您最常使用何種乘車方式？",
+          required: true,
+          options: ["人車同行", "自行車託運", "兩鐵專車"],
+          conditional: {
+            dependsOn: "train-used",
+            showWhen: "是",
+          },
+        },
+        {
+          id: "train-service-satisfaction",
+          type: "matrix",
+          label:
+            "請針對以下兩鐵列車提供的服務項目，填答您認知的重要性及使用的滿意度：",
+          required: true,
+          options: [
+            "兩鐵環保列車各班次自行車剩餘空位查詢",
+            "購票方式",
+            "網路購票操作介面",
+            "App購票操作介面",
+            "兩鐵班次資訊查詢",
+            "自行車可進出車站資訊",
+            "自行車進出月台動線指引",
+            "車站自行車牽引道",
+            "車站電梯",
+            "對號車廂內，自行車停放空間",
+            "非對號車廂內，自行車停放空間",
+          ],
+          scale: [
+            "很不滿意",
+            "不太滿意",
+            "尚可",
+            "還算滿意",
+            "非常滿意",
+            "無使用經驗",
+          ],
+          conditional: {
+            dependsOn: "train-used",
+            showWhen: "是",
+          },
+        },
+        {
+          id: "train-service-improvement",
+          type: "region-long-answer",
+          label: "您對兩鐵列車所提供之上述服務感到不滿意之地點及原因為何？（非必填）",
+          regions: [
+            "基隆車站",
+            "台北車站",
+            "板橋車站",
+            "桃園車站",
+            "新竹車站",
+            "苗栗車站",
+            "台中車站",
+            "彰化車站",
+            "雲林車站",
+            "嘉義車站",
+            "台南車站",
+            "高雄車站",
+            "屏東車站",
+            "台東車站",
+            "花蓮車站",
+            "宜蘭車站",
+            "其他車站",
+          ],
+          minBlocks: 1,
+          maxBlocks: 3,
+          locationPlaceholder: "設施名稱",
+          locationLabel: "待改善設施",
+          reasonPlaceholder: "不滿意的原因",
+          conditional: {
+            dependsOn: "train-used",
+            showWhen: "是",
+          },
+        },
+        {
+          id: "train-increase-schedule",
+          type: "train-schedule-request",
+          label: "您認為兩鐵列車之服務班次，是否有需要增加？",
+          required: true,
+          options: ["無需增加", "需要增加班次"],
+          showScheduleWhen: "需要增加班次",
+          minBlocks: 1,
+          maxBlocks: 3,
+          startStationLabel: "站別（起點）",
+          endStationLabel: "站別（迄點）",
+          scheduleLabel: "日別",
+          startStationPlaceholder: "請輸入起點站名",
+          endStationPlaceholder: "請輸入終點站名",
+          conditional: {
+            dependsOn: "train-used",
+            showWhen: "是",
+          },
+        },
+        {
+          id: "train-willingness",
+          type: "radio-text",
+          label: "前述服務加強改善後，是否會提升您使用兩鐵列車的意願？",
+          required: true,
+          options: [
+            {
+              value: "是",
+              label: "是",
+            },
+            {
+              value: "不一定",
+              label: "不一定",
+            },
+            {
+              value: "否",
+              label: "否",
+              hasTextInput: true,
+              textLabel: "請說明原因",
+              textPlaceholder: "請簡單說明原因...",
+              textMinLength: 5,
+              textMaxLength: 300,
+            },
+          ],
+          conditional: {
+            dependsOn: "train-used",
+            showWhen: "是",
+          },
+        },
+        {
+          id: "train-station-friendliness",
+          type: "textarea",
+          label:
+            "有愈來愈多的青年學子及多元弱勢族群（如：高齡者、身心障礙人士）以騎乘自行車環島當作人生挑戰，您認為做為自行車補給站的臺鐵車站有哪些可再增加或提升的自行車友善設施？",
+          required: true,
+          conditional: {
+            dependsOn: "train-used",
+            showWhen: "是",
+          },
+        },
+      ],
+    }
+  ],
+}

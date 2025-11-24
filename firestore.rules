@@ -1,0 +1,99 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check if user is admin
+    function isAdmin() {
+      return request.auth != null && 
+             exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // Helper function to validate submission data
+    function validateSubmissionData(data) {
+      return data.keys().hasAll(['userId', 'questionnaireId', 'responseId', 'submittedAt']) &&
+             data.userId is string &&
+             data.questionnaireId is string &&
+             data.responseId is string;
+    }
+
+    // Helper function to validate route completion increment operations
+    function isValidRouteCompletionUpdate(newData, oldData) {
+      // Check if only allowed fields are being modified for non-admin users
+      return newData.diff(oldData).affectedKeys().hasOnly(['currentCompletions', 'lastUpdated', 'metadata']);
+    }
+
+    // Users collection: users can read/write their own profile, admins can read/write all
+    match /users/{userId} {
+      // Allow users to create their own profile during registration
+      allow create: if request.auth != null && request.auth.uid == userId;
+      // Allow users to read/write their own profile, admins can read/write all
+      allow read, write: if request.auth != null && 
+                            (request.auth.uid == userId || isAdmin());
+    }
+
+    // User stats: users can read/write their own stats, admins can read/write all
+    match /user_stats/{userId} {
+      // Allow users to create their own stats during registration or first questionnaire
+      allow create: if request.auth != null && request.auth.uid == userId;
+      // Allow users to read/write their own stats, admins can read/write all
+      allow read, write: if request.auth != null && 
+                            (request.auth.uid == userId || isAdmin());
+    }
+
+    // Questionnaires: anyone can read, authenticated users can write, admins can do everything
+    match /questionnaires/{document} {
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow create, update, delete: if request.auth != null && 
+                                      (request.auth != null || isAdmin());
+    }
+
+    // Questionnaire responses: users can read/write their own responses, admins can read/write all
+    match /questionnaire_responses/{document} {
+      allow read, write: if request.auth != null &&
+        (request.auth.uid == resource.data.userId ||
+         request.auth.uid == request.resource.data.userId ||
+         isAdmin());
+      allow create: if request.auth != null && 
+                      (request.auth.uid == request.resource.data.userId || isAdmin());
+    }
+
+    // Questionnaire submissions: track route-specific submissions
+    match /questionnaire_submissions/{document} {
+      allow read: if request.auth != null &&
+        (request.auth.uid == resource.data.userId || isAdmin());
+      allow write: if request.auth != null &&
+        (request.auth.uid == resource.data.userId || isAdmin());
+      allow create: if request.auth != null && 
+        request.auth.uid == request.resource.data.userId &&
+        validateSubmissionData(request.resource.data);
+      allow update, delete: if isAdmin();
+    }
+
+    // User info collection: users can read/write their own info, admins can read/write all
+    match /user_info/{userInfoId} {
+      // Allow users to create their own info during registration
+      allow create: if request.auth != null && request.auth.uid == resource.data.userId;
+      // Allow users to read/write their own info, admins can read/write all
+      allow read, write: if request.auth != null && 
+                      (request.auth.uid == resource.data.userId || isAdmin());
+    }
+
+    // Voucher claims: users can read their own claims, admins can read/write all
+    match /voucher_claims/{claimId} {
+      allow read: if request.auth != null && 
+                     (request.auth.uid == resource.data.userId || isAdmin());
+      allow write: if request.auth != null && isAdmin();
+      allow create: if request.auth != null && 
+                      request.auth.uid == resource.data.userId;
+    }
+
+    // Route completion tracking: allow authenticated users to increment, admins to do everything
+    match /route_completion_tracking/{document} {
+      allow read: if request.auth != null;
+      allow update: if request.auth != null && 
+        (isAdmin() || isValidRouteCompletionUpdate(request.resource.data, resource.data));
+      allow create, delete: if request.auth != null && isAdmin();
+    }
+  }
+}

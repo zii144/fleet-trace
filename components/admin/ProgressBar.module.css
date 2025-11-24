@@ -1,0 +1,15 @@
+.progressBar {
+  transition: width 0.3s ease;
+}
+
+[data-width="0%"] .progressBar { width: 0%; }
+[data-width="10%"] .progressBar { width: 10%; }
+[data-width="20%"] .progressBar { width: 20%; }
+[data-width="30%"] .progressBar { width: 30%; }
+[data-width="40%"] .progressBar { width: 40%; }
+[data-width="50%"] .progressBar { width: 50%; }
+[data-width="60%"] .progressBar { width: 60%; }
+[data-width="70%"] .progressBar { width: 70%; }
+[data-width="80%"] .progressBar { width: 80%; }
+[data-width="90%"] .progressBar { width: 90%; }
+[data-width="100%"] .progressBar { width: 100%; }

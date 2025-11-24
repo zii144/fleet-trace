@@ -232,21 +232,19 @@ export default function LoginPage() {
           <>
             <DefaultIcon
               className={`w-5 h-5 transition-all duration-300 absolute top-0 left-0 ${
-                showOriginalIcon
-                  ? "opacity-100 scale-100"
-                  : "opacity-0 scale-95"
+                showOriginalIcon ? "opacity-100" : "opacity-0"
               } ${isFocused ? "text-gray-600" : "text-gray-400"}`}
             />
             <CheckCircle2
               className={`w-5 h-5 transition-all duration-300 absolute top-0 left-0 ${
-                isValid ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                isValid ? "opacity-100" : "opacity-0"
               } ${isFocused ? "text-green-500" : "text-green-400"}`}
             />
           </>
         ) : (
           <DefaultIcon
             className={`w-5 h-5 transition-all duration-300 ${
-              isFocused ? "text-gray-600 scale-110" : "text-gray-400"
+              isFocused ? "text-gray-600" : "text-gray-400"
             }`}
           />
         )}
@@ -685,8 +683,8 @@ export default function LoginPage() {
                 <Button
                   type="submit"
                   className="w-full bg-gradient-to-b from-gray-800 to-gray-950 
-                  hover:from-gray-700 hover:to-gray-800 transition-all duration-500 
-                  shadow-md hover:shadow-lg transform hover:-translate-y-0.5 hover:text-base
+                  transition-all duration-500 
+                  shadow-md
                   rounded-xl"
                   disabled={isFormLoading}
                 >
@@ -697,7 +695,7 @@ export default function LoginPage() {
                   <button
                     type="button"
                     onClick={() => setShowForgotPassword(true)}
-                    className="text-sm text-blue-600 hover:text-blue-800 underline"
+                    className="text-sm text-blue-600 underline"
                   >
                     忘記密碼？
                   </button>
@@ -802,8 +800,8 @@ export default function LoginPage() {
                 <Button
                   type="button"
                   className="w-full bg-gradient-to-b from-blue-500 to-blue-600 
-                  hover:from-blue-500 hover:to-blue-600 transition-all duration-500 
-                  shadow-md hover:shadow-lg transform hover:-translate-y-0.5 hover:text-base
+                  transition-all duration-500 
+                  shadow-md
                   rounded-xl"
                   onClick={() => setShowInfoModal(true)}
                 >
@@ -813,8 +811,8 @@ export default function LoginPage() {
                 <Button
                   type="submit"
                   className="w-full bg-gradient-to-b from-gray-800 to-gray-950 
-                  hover:from-gray-700 hover:to-gray-800 transition-all duration-500 
-                  shadow-md hover:shadow-lg transform hover:-translate-y-0.5 hover:text-base
+                  transition-all duration-500 
+                  shadow-md
                   rounded-xl"
                   disabled={isFormLoading}
                 >
@@ -855,7 +853,7 @@ export default function LoginPage() {
                       disabled={resendCooldown > 0 || isResendingVerification}
                       variant="outline"
                       size="sm"
-                      className="text-blue-700 border-blue-300 hover:bg-blue-100"
+                      className="text-blue-700 border-blue-300"
                     >
                       {isResendingVerification
                         ? "發送中..."
@@ -1010,8 +1008,8 @@ export default function LoginPage() {
             <Button
               onClick={() => setShowInfoModal(false)}
               className="w-full bg-gradient-to-b from-blue-500 to-blue-600 
-                  hover:from-blue-500 hover:to-blue-600 transition-all duration-500 
-                  shadow-md hover:shadow-lg transform hover:-translate-y-0.5 hover:text-base
+                  transition-all duration-500 
+                  shadow-md
                   rounded-xl"
             >
               我了解了
@@ -1085,7 +1083,7 @@ export default function LoginPage() {
                 📧 如有任何問題，請聯繫：{" "}
                 <a
                   href="mailto:support@bike-life.net"
-                  className="font-medium underline hover:text-blue-900"
+                  className="font-medium underline"
                 >
                   support@bike-life.net
                 </a>
@@ -1101,8 +1099,8 @@ export default function LoginPage() {
                   logout();
                 }}
                 className="w-full bg-gradient-to-r from-gray-800 to-gray-900 
-                    hover:from-gray-700 hover:to-gray-800 transition-all duration-300 
-                    shadow-lg hover:shadow-xl transform hover:-translate-y-0.5
+                    transition-all duration-300 
+                    shadow-lg
                     rounded-xl py-3 text-base font-medium"
               >
                 我知道了
@@ -1118,7 +1116,7 @@ export default function LoginPage() {
           需要協助？請聯繫我們：{" "}
           <a
             href="mailto:support@bike-life.net"
-            className="text-blue-200 hover:text-blue-400 underline font-medium"
+            className="text-blue-200 underline font-medium"
           >
             support@bike-life.net
           </a>

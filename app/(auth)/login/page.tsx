@@ -33,7 +33,6 @@ import {
 import { Banner } from "@/components/ui/Banner";
 import { Mail, Lock, CheckCircle2, AlertCircle, User } from "lucide-react";
 import Image from "next/image";
-import { ServiceCompletionModal } from "@/components/auth/ServiceCompletionModal";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -52,8 +51,6 @@ export default function LoginPage() {
   const [resetEmail, setResetEmail] = useState("");
   const [isResettingPassword, setIsResettingPassword] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
-  const [showServiceCompletionModal, setShowServiceCompletionModal] =
-    useState(false);
   const { login, logout, hasRememberMeSession, user, isLoading } = useAuth();
   const router = useRouter();
   const [isEmailFocused, setIsEmailFocused] = useState(false);
@@ -173,7 +170,7 @@ export default function LoginPage() {
     }
   }, [user, pendingVerificationEmail]);
 
-  // Effect to show service completion modal for non-admin users after login
+  // Effect to redirect logged-in users to dashboard
   useEffect(() => {
     if (user && !isLoading) {
       console.log("🔍 Checking user role after login:", user.role);
@@ -181,11 +178,8 @@ export default function LoginPage() {
         console.log("🔧 Admin user detected, redirecting to dashboard...");
         router.push("/dashboard");
       } else {
-        console.log(
-          "👤 Normal user detected, showing service completion modal and staying on login page..."
-        );
-        setShowServiceCompletionModal(true);
-        // Normal users stay on the login page with the modal
+        console.log("👤 Normal user detected, redirecting to dashboard...");
+        router.push("/dashboard");
       }
     }
   }, [user, isLoading, router]);
@@ -962,7 +956,7 @@ export default function LoginPage() {
                   </h4>
                   <p className="text-gray-600 pt-2">
                     您的電子郵件將用於接收我們發送的 Line Points
-                    獎勵。這是我們回饋參與問卷調查活動的方式，確保您能及時收到應得的獎勵。
+                    獎勵。這是我們回饋參與評鑑調查活動的方式，確保您能及時收到應得的獎勵。
                   </p>
                 </div>
               </div>
@@ -976,7 +970,7 @@ export default function LoginPage() {
                     密碼安全
                   </h4>
                   <p className="text-gray-600 pt-2">
-                    我們不會收集或儲存您的密碼。您需要記住自己的密碼，這樣才能持續參與問卷調查活動。請選擇一個安全且容易記住的密碼。
+                    我們不會收集或儲存您的密碼。您需要記住自己的密碼，這樣才能持續參與評鑑調查活動。請選擇一個安全且容易記住的密碼。
                   </p>
                 </div>
               </div>
@@ -990,7 +984,7 @@ export default function LoginPage() {
                     個人資料
                   </h4>
                   <p className="text-gray-600 pt-2">
-                    您的個人資料僅用於問卷調查活動的統計分析，我們承諾保護您的隱私，不會將資料提供給第三方。
+                    您的個人資料僅用於評鑑調查活動的統計分析，我們承諾保護您的隱私，不會將資料提供給第三方。
                   </p>
                 </div>
               </div>
@@ -1018,13 +1012,6 @@ export default function LoginPage() {
           </div>
         </DialogContent>
       </Dialog>
-
-      {/* Service Completion Modal */}
-      <ServiceCompletionModal
-        isOpen={showServiceCompletionModal}
-        onClose={() => setShowServiceCompletionModal(false)}
-        onLogout={logout}
-      />
 
       {/* Footer */}
       <footer className="fixed bottom-0 left-0 right-0 py-3 px-4 text-center">

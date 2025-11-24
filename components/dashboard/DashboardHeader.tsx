@@ -15,7 +15,7 @@ export function DashboardHeader({
   onShowPromo,
 }: DashboardHeaderProps) {
   return (
-    <header className="bg-white/5 backdrop-blur-sm border-b border-gray-200 sticky top-0">
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4 sm:py-6 min-w-0">
           <div className="min-w-0 flex-1 pr-4">
@@ -33,7 +33,7 @@ export function DashboardHeader({
                 // Define your welcome messages here
                 const messages = [
                   "很高興再次見到你！",
-                  "歡迎回來，以下是為您準備好的問卷",
+                  "歡迎回來，以下是為您準備好的評鑑調查",
                   "感謝你的參與，希望您有美好的體驗！",
                 ];
                 // Pick one at random
@@ -77,7 +77,7 @@ export function DashboardHeader({
                 variant="default"
                 size="sm"
                 onClick={onShowPromo}
-                className="whitespace-nowrap px-2 sm:px-3 bg-orange-500 hover:bg-orange-600 text-white"
+                className="whitespace-nowrap px-2 sm:px-3 bg-orange-500 text-white"
               >
                 {/* Mobile: icon only */}
                 <Gift className="w-4 h-4 sm:mr-1" />

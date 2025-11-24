@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://bike-life.net"),
   title: "乘跡｜計程車服務品質評核平台",
   description:
-    "乘跡，計程車服務品質評核平台。結合數據分析與問卷回饋，提升計程車服務品質。",
+    "乘跡，計程車服務品質評核平台。結合數據分析與評鑑調查回饋，提升計程車服務品質。",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: "乘跡｜計程車服務品質評核平台",
     title: "乘跡｜計程車服務品質評核平台",
     description:
-      "乘跡，計程車服務品質評核平台。結合數據分析與問卷回饋，提升計程車服務品質。",
+      "乘跡，計程車服務品質評核平台。結合數據分析與評鑑調查回饋，提升計程車服務品質。",
     url: "https://bike-life.net",
     locale: "zh_TW",
     images: [
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     creator: "@bikelife_tw",
     title: "乘跡｜計程車服務品質評核平台",
     description:
-      "乘跡，計程車服務品質評核平台。結合數據分析與問卷回饋，提升計程車服務品質。",
+      "乘跡，計程車服務品質評核平台。結合數據分析與評鑑調查回饋，提升計程車服務品質。",
     images: ["/social-share-banner.png"],
   },
   // Additional social media meta tags
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     // LINE-specific optimizations
     "line:title": "乘跡｜計程車服務品質評核平台",
     "line:description":
-      "乘跡，計程車服務品質評核平台。結合數據分析與問卷回饋，提升計程車服務品質。",
+      "乘跡，計程車服務品質評核平台。結合數據分析與評鑑調查回饋，提升計程車服務品質。",
     "line:image": "https://bike-life.net/social-share-banner.png",
     "line:url": "https://bike-life.net",
     // Additional LINE optimizations
@@ -101,7 +101,7 @@ export const metadata: Metadata = {
     "單車",
     "騎行",
     "台灣",
-    "問卷",
+    "評鑑調查",
     "數據分析",
     "乘跡",
     "bike-life",

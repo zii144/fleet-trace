@@ -450,8 +450,8 @@ export function QuestionnaireBuilder({
       const changeCount = pendingChanges.length;
       const successMessage =
         changeCount > 0
-          ? `已順利保存問卷，共套用 ${changeCount} 項變更`
-          : "已順利保存問卷";
+          ? `已順利保存評鑑調查，共套用 ${changeCount} 項變更`
+          : "已順利保存評鑑調查";
 
       setHasUnsavedChanges(false);
       setPendingChanges([]);
@@ -467,7 +467,7 @@ export function QuestionnaireBuilder({
       onSave(questionnaireData);
     } catch (error) {
       console.error("Error saving questionnaire:", error);
-      alert("保存問卷時發生錯誤，請稍後再試");
+      alert("保存評鑑調查時發生錯誤，請稍後再試");
     } finally {
       setIsLoading(false);
     }
@@ -498,9 +498,9 @@ export function QuestionnaireBuilder({
                 </Button>
                 <div>
                   <h1 className="text-2xl font-bold">
-                    {questionnaire ? "編輯問卷" : "創建新問卷"}
+                    {questionnaire ? "編輯評鑑調查" : "創建新評鑑調查"}
                   </h1>
-                  <p className="text-gray-600">設計您的問卷結構和問題</p>
+                  <p className="text-gray-600">設計您的評鑑調查結構和問題</p>
                 </div>
               </div>
               <div className="flex space-x-2">
@@ -520,7 +520,7 @@ export function QuestionnaireBuilder({
                     ? "保存中..."
                     : hasUnsavedChanges
                     ? "保存變更"
-                    : "保存問卷"}
+                    : "保存評鑑調查"}
                 </Button>
               </div>
             </div>
@@ -532,7 +532,7 @@ export function QuestionnaireBuilder({
                   <AlertTriangle className="w-5 h-5 text-orange-400 mr-3" />
                   <div className="ml-3">
                     <p className="text-sm text-orange-700">
-                      <strong>您有未保存的變更</strong> - 請記得保存您的問卷修改
+                      <strong>您有未保存的變更</strong> - 請記得保存您的評鑑調查修改
                     </p>
                   </div>
                 </div>
@@ -563,25 +563,25 @@ export function QuestionnaireBuilder({
               <div className="sticky top-4 space-y-4 max-h-[calc(100vh-8rem)] overflow-y-auto">
                 <Card>
                   <CardHeader>
-                    <CardTitle>問卷資訊</CardTitle>
+                    <CardTitle>評鑑調查資訊</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div>
-                      <Label htmlFor="title">問卷標題</Label>
+                      <Label htmlFor="title">評鑑調查標題</Label>
                       <Input
                         id="title"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        placeholder="輸入問卷標題"
+                        placeholder="輸入評鑑調查標題"
                       />
                     </div>
                     <div>
-                      <Label htmlFor="description">問卷描述</Label>
+                      <Label htmlFor="description">評鑑調查描述</Label>
                       <Textarea
                         id="description"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        placeholder="輸入問卷描述"
+                        placeholder="輸入評鑑調查描述"
                         rows={3}
                       />
                     </div>
@@ -847,9 +847,9 @@ export function QuestionnaireBuilder({
       <Dialog open={showPreview} onOpenChange={setShowPreview}>
         <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>問卷預覽</DialogTitle>
+            <DialogTitle>評鑑調查預覽</DialogTitle>
             <DialogDescription>
-              預覽您的問卷在用戶端的顯示效果
+              預覽您的評鑑調查在用戶端的顯示效果
             </DialogDescription>
           </DialogHeader>
           <QuestionnairePreview questionnaire={currentQuestionnaire} />
@@ -910,7 +910,7 @@ export function QuestionnaireBuilder({
             <AlertDialogDescription>
               您目前有尚未保存的變更。若直接返回，這些修改將會遺失。
               <br />
-              建議您先保存問卷，以確保所有內容不會遺漏。
+              建議您先保存評鑑調查，以確保所有內容不會遺漏。
               <br />
               <span className="text-gray-700">
                 確定要放棄這些變更並返回嗎？

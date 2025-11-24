@@ -249,7 +249,7 @@ export default function UserInfoManagement({
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
           <Input
-            placeholder="搜尋顯示名稱、問卷姓名、縣市或用戶ID..."
+            placeholder="搜尋顯示名稱、評鑑調查姓名、縣市或用戶ID..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-10"

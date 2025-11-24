@@ -90,7 +90,7 @@ export default function AdminPage() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("確定要刪除這個問卷嗎？此操作無法復原。")) {
+    if (!confirm("確定要刪除這個評鑑調查嗎？此操作無法復原。")) {
       return;
     }
 
@@ -100,7 +100,7 @@ export default function AdminPage() {
       await loadData(); // Reload data
     } catch (error) {
       console.error("Error deleting questionnaire:", error);
-      alert("刪除問卷時發生錯誤，請稍後再試");
+      alert("刪除評鑑調查時發生錯誤，請稍後再試");
     } finally {
       setIsLoading(false);
     }
@@ -143,7 +143,7 @@ export default function AdminPage() {
               <div className="flex justify-between items-center py-6">
                 <div>
                   <h1 className="text-3xl font-bold text-gray-900">管理面板</h1>
-                  <p className="text-gray-600">管理問卷並查看回覆</p>
+                  <p className="text-gray-600">管理評鑑調查並查看回覆</p>
                 </div>
                 <Link href="/dashboard">
                   <Button variant="outline">
@@ -175,16 +175,16 @@ export default function AdminPage() {
                     數據管理
                   </TabsTrigger>
                   <TabsTrigger value="user-info">用戶資料</TabsTrigger>
-                  <TabsTrigger value="questionnaires">問卷管理</TabsTrigger>
+                  <TabsTrigger value="questionnaires">評鑑調查管理</TabsTrigger>
                   {/* <TabsTrigger value="responses">回覆記錄</TabsTrigger> */}
                 </TabsList>
 
                 <TabsContent value="questionnaires" className="space-y-6">
                   <div className="flex justify-between items-center">
-                    <h2 className="text-2xl font-semibold">管理問卷</h2>
+                    <h2 className="text-2xl font-semibold">管理評鑑調查</h2>
                     <Button onClick={handleNewQuestionnaire}>
                       <Plus className="w-4 h-4 mr-2" />
-                      新增問卷
+                      新增評鑑調查
                     </Button>
                   </div>
 

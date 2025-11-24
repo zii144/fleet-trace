@@ -10,6 +10,7 @@ import {
   dismissUpdate,
   hasUserDismissedUpdate,
   performComprehensiveUpgrade,
+  isReturningUser,
 } from "@/lib/version-check";
 
 interface UpdateNotificationProps {
@@ -29,16 +30,24 @@ export default function UpdateNotification({
   useEffect(() => {
     // Check version on component mount
     const checkVersion = () => {
+      // Only show update notification for returning users
+      // New users should always have the latest version
+      if (!isReturningUser()) {
+        console.log("👤 New user detected, skipping update notification");
+        return;
+      }
+
       const { needsUpdate, currentVersion, cachedVersion } = checkAppVersion();
 
       setVersionInfo({ currentVersion, cachedVersion });
 
       // Show update notification if:
-      // 1. Version needs update
-      // 2. User hasn't dismissed this version
+      // 1. User is a returning user
+      // 2. Version needs update
+      // 3. User hasn't dismissed this version
       if (needsUpdate && !hasUserDismissedUpdate()) {
         setShowUpdate(true);
-        console.log("📢 Showing update notification");
+        console.log("📢 Showing update notification for returning user");
       }
     };
 

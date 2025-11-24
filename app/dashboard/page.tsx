@@ -64,9 +64,12 @@ export default function DashboardPage() {
         setIsLoading(true);
         setError(null);
 
-        // Load questionnaires
-        const questionnaireData = getQuestionnaires();
-        setQuestionnaires(questionnaireData);
+        // Load questionnaires - show all taxi service quality surveys
+        const allQuestionnaires = getQuestionnaires();
+        const filteredQuestionnaires = allQuestionnaires.filter((q) =>
+          q.id.includes("-taxi-service-quality-survey")
+        );
+        setQuestionnaires(filteredQuestionnaires);
 
         // Load user stats if user is logged in
         if (user?.id) {
@@ -145,7 +148,7 @@ export default function DashboardPage() {
         <DashboardHeader
           user={user as any}
           onLogout={handleLogout}
-          onShowPromo={showPromoModal}
+          onShowPromo={undefined}
         />
         {/* Hero Section with Background */}
         <div className="relative min-h-screen">
@@ -187,7 +190,7 @@ export default function DashboardPage() {
                       : "opacity-0 translate-y-8"
                   }`}
                 >
-                  繼續您的騎行體驗分享之旅
+                  填寫評鑑調查
                 </p>
               </div>
             </div>
@@ -200,7 +203,7 @@ export default function DashboardPage() {
                   : "opacity-0 translate-y-12"
               }`}
             >
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* User Info Card */}
                 {!isLoading && userStats && (
                   <div
@@ -253,10 +256,10 @@ export default function DashboardPage() {
                   }`}
                 >
                   <h1 className="text-3xl font-bold text-white drop-shadow-lg mb-2">
-                    問卷儀表板
+                    評鑑調查儀表板
                   </h1>
                   <p className="text-white/80 drop-shadow-lg">
-                    選擇一個問卷開始填寫
+                    選擇一個評鑑調查開始填寫
                   </p>
                 </div>
 
@@ -269,7 +272,7 @@ export default function DashboardPage() {
                 {isLoading ? (
                   <div className="text-center py-12">
                     <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
-                    <p className="mt-2 text-gray-600">載入問卷中...</p>
+                    <p className="mt-2 text-gray-600">載入評鑑調查中...</p>
                   </div>
                 ) : (
                   <div
@@ -293,13 +296,13 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Promotion Window */}
-      <PromoModal
+      {/* Promotion Window - Disabled */}
+      {/* <PromoModal
         isOpen={isPromoOpen}
         onClose={hidePromoModal}
         onGetStarted={handlePromoGetStarted}
         onDismissPermanently={dismissPromoModal}
-      />
+      /> */}
 
       {/* Full-screen promotion cover */}
       {isPromotionCoverVisible && activePromotions.length > 0 && (

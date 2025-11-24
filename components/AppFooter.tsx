@@ -42,7 +42,7 @@ export function AppFooter({
               <div>
                 <h3 className="font-semibold text-foreground">乘跡</h3>
                 <p className="text-xs text-muted-foreground">
-                  騎行體驗分享平台
+                  計程車服務品質評核平台
                 </p>
               </div>
             </div>
@@ -66,8 +66,8 @@ export function AppFooter({
             )}
 
             <p className="text-xs text-muted-foreground leading-relaxed">
-              台灣首創的騎行體驗分享平台，結合數據分析與問卷回饋，
-              讓每一段旅程都成為台灣單車文化的軌跡。
+              計程車服務品質評核平台，結合數據分析與評鑑調查回饋，
+              提升計程車服務品質。
             </p>
           </div>
 
@@ -115,11 +115,11 @@ export function AppFooter({
             <h4 className="font-medium text-foreground">支援與聯絡</h4>
             <div className="space-y-2">
               <a
-                href="mailto:support@bike-life.net"
+                href="mailto:support@taxi-life.net"
                 className="flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 <Mail className="w-3 h-3 mr-2" />
-                support@bike-life.net
+                support@taxi-life.net
               </a>
               <a
                 href="https://github.com/zii144/fleet-trace/issues"

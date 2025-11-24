@@ -41,7 +41,7 @@ export function generateSocialMediaMeta(config: SocialMediaMetaConfig): Metadata
       '單車',
       '騎行',
       '台灣',
-      '問卷',
+      '評鑑調查',
       '數據分析',
       '乘跡',
       'bike-life',
@@ -56,7 +56,7 @@ export function generateSocialMediaMeta(config: SocialMediaMetaConfig): Metadata
     publisher: '乘跡',
     openGraph: {
       type,
-      siteName: '乘跡｜騎行體驗分享平台',
+      siteName: '乘跡｜計程車服務品質評核平台',
       title,
       description,
       url: fullUrl,
@@ -93,7 +93,7 @@ export function generateSocialMediaMeta(config: SocialMediaMetaConfig): Metadata
       'line:description': description,
       'line:image': fullImageUrl,
       'line:url': fullUrl,
-      'line:site_name': '乘跡｜騎行體驗分享平台',
+      'line:site_name': '乘跡｜計程車服務品質評核平台',
       'line:type': type,
       // WhatsApp Business API (if applicable)
       'whatsapp:business': process.env.NEXT_PUBLIC_WHATSAPP_BUSINESS_ID || 'your-whatsapp-business-id',
@@ -126,7 +126,7 @@ export function generateLINEMeta(config: SocialMediaMetaConfig): Metadata {
       '單車',
       '騎行',
       '台灣',
-      '問卷',
+      '評鑑調查',
       '數據分析',
       '乘跡',
       'bike-life',
@@ -143,7 +143,7 @@ export function generateLINEMeta(config: SocialMediaMetaConfig): Metadata {
     publisher: '乘跡',
     openGraph: {
       type,
-      siteName: '乘跡｜騎行體驗分享平台',
+      siteName: '乘跡｜計程車服務品質評核平台',
       title,
       description,
       url: fullUrl,
@@ -172,7 +172,7 @@ export function generateLINEMeta(config: SocialMediaMetaConfig): Metadata {
       'line:description': description,
       'line:image': fullImageUrl,
       'line:url': fullUrl,
-      'line:site_name': '乘跡｜騎行體驗分享平台',
+      'line:site_name': '乘跡｜計程車服務品質評核平台',
       'line:type': type,
       // Additional LINE-specific tags
       'line:locale': 'zh_TW',
@@ -192,22 +192,22 @@ export function generateLINEMeta(config: SocialMediaMetaConfig): Metadata {
  */
 export const pageMetaConfigs = {
   home: {
-    title: '乘跡｜騎行體驗分享平台 - 台灣單車文化軌跡',
-    description: '乘跡，台灣首創的騎行體驗分享平台。結合數據分析與問卷回饋，讓每一段旅程都成為台灣單車文化的軌跡。探索台灣最美的單車路線，分享你的騎行故事。',
+    title: '乘跡｜計程車服務品質評核平台',
+    description: '乘跡，計程車服務品質評核平台。結合數據分析與評鑑調查回饋，提升計程車服務品質。',
     image: '/social-share-banner.png',
     tags: ['首頁', '平台介紹'],
   },
   dashboard: {
     title: '個人儀表板 - 乘跡',
-    description: '查看你的騎行數據、問卷完成狀況和個人統計。追蹤你的騎行軌跡，發現更多台灣單車路線。',
+    description: '查看你的騎行數據、評鑑調查完成狀況和個人統計。追蹤你的騎行軌跡，發現更多台灣單車路線。',
     image: '/dashboard-preview.png',
     tags: ['儀表板', '個人數據'],
   },
   questionnaire: {
-    title: '騎行問卷調查 - 乘跡',
+    title: '騎行評鑑調查 - 乘跡',
     description: '參與台灣單車文化研究，分享你的騎行體驗。你的回饋將幫助改善台灣的單車環境和路線規劃。',
     image: '/questionnaire-preview.png',
-    tags: ['問卷', '調查', '回饋'],
+    tags: ['評鑑調查', '調查', '回饋'],
   },
   profile: {
     title: '個人檔案 - 乘跡',
@@ -217,7 +217,7 @@ export const pageMetaConfigs = {
   },
   admin: {
     title: '管理後台 - 乘跡',
-    description: '乘跡平台管理系統，管理問卷、用戶數據和平台內容。',
+    description: '乘跡平台管理系統，管理評鑑調查、用戶數據和平台內容。',
     image: '/admin-preview.png',
     tags: ['管理', '後台'],
   },

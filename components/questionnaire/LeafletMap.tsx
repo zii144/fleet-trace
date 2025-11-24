@@ -10,8 +10,6 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAuth } from "@/components/auth/AuthProvider";
-import { routeSubmissionService } from "@/lib/services/RouteSubmissionService";
-import type { RouteAvailability } from "@/types/route-submission";
 
 // Fix for default markers in Next.js
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -46,107 +44,15 @@ export default function LeafletMap({
     Map<string, "loading" | "loaded" | "error">
   >(new Map());
   const [selectedLayerId, setSelectedLayerId] = useState<string>("");
-  const [routeAvailability, setRouteAvailability] = useState<RouteAvailability>(
-    {
-      available: [],
-      restricted: [],
-      warnings: [],
-      hidden: [],
-    }
-  );
-  const [routeFilteringLoading, setRouteFilteringLoading] = useState(true);
-
-  const { user } = useAuth();
 
   // Debug logging function
   const addDebugInfo = (message: string) => {
     console.log(`[LeafletMap] ${message}`);
   };
 
-  // Load route availability when component mounts
-  useEffect(() => {
-    console.log("useEffect triggered:", {
-      userId: user?.id,
-      questionnaireId,
-      kmlFilesCount: question.kmlFiles?.length,
-    });
-
-    async function loadRouteAvailability() {
-      if (user?.id && questionnaireId && question.kmlFiles) {
-        setRouteFilteringLoading(true);
-        try {
-          addDebugInfo(
-            `Loading route availability for user ${user.id} and questionnaire ${questionnaireId}`
-          );
-          const availability = await routeSubmissionService.getAvailableRoutes(
-            user.id,
-            questionnaireId,
-            question.kmlFiles
-          );
-          setRouteAvailability(availability);
-          addDebugInfo(
-            `Route availability loaded: ${
-              availability.available.length
-            } available, ${availability.restricted.length} restricted, ${
-              availability.warnings.length
-            } warnings, ${availability.hidden?.length || 0} hidden`
-          );
-
-          // Debug: Log route availability summary
-          addDebugInfo(
-            `Route availability summary: ${
-              availability.available.length
-            } available, ${availability.restricted.length} restricted, ${
-              availability.warnings.length
-            } warnings, ${availability.hidden?.length || 0} hidden`
-          );
-        } catch (error) {
-          console.error("Error loading route availability:", error);
-          // Fallback to all routes available
-          setRouteAvailability({
-            available: question.kmlFiles || [],
-            restricted: [],
-            warnings: [],
-            hidden: [],
-          });
-          addDebugInfo("Failed to load route availability, showing all routes");
-        } finally {
-          setRouteFilteringLoading(false);
-        }
-      } else {
-        // No user, questionnaire, or kml files - show all routes
-        setRouteAvailability({
-          available: question.kmlFiles || [],
-          restricted: [],
-          warnings: [],
-          hidden: [],
-        });
-        setRouteFilteringLoading(false);
-        addDebugInfo("No route filtering applied - showing all routes");
-      }
-    }
-
-    loadRouteAvailability();
-  }, [user?.id, questionnaireId, question.kmlFiles]);
-
-  // Get filtered KML files based on route availability
+  // Get KML files (no filtering - route availability removed)
   const getFilteredKmlFiles = () => {
-    if (routeFilteringLoading) {
-      return question.kmlFiles || [];
-    }
-
-    // Combine available and warning routes, but exclude restricted routes (which are hidden)
-    const filteredRoutes = [
-      ...routeAvailability.available,
-      ...routeAvailability.warnings,
-    ];
-
-    addDebugInfo(
-      `Filtered routes: ${filteredRoutes.length} out of ${
-        question.kmlFiles?.length || 0
-      } total routes`
-    );
-    return filteredRoutes;
+    return question.kmlFiles || [];
   };
 
   useEffect(() => {
@@ -862,16 +768,6 @@ export default function LeafletMap({
       return;
     }
 
-    // Check for warnings before selecting
-    const warningRoute = routeAvailability.warnings.find(
-      (w) => w.id === layerId
-    );
-    if (warningRoute) {
-      if (!confirm(`${warningRoute.warning}\n\n是否要繼續選擇此路線？`)) {
-        return;
-      }
-    }
-
     // Select the new layer
     selectLayer(layerId, layerName);
   };
@@ -887,28 +783,6 @@ export default function LeafletMap({
     addDebugInfo("Hide all layers - cleared selection");
   };
 
-  // Show loading skeleton while route filtering is in progress
-  if (routeFilteringLoading && questionnaireId && user?.id) {
-    return (
-      <div className="space-y-4">
-        <div className="flex items-center gap-2">
-          <Badge variant="outline">載入中</Badge>
-          <span className="text-sm text-gray-600">正在檢查路線提交記錄...</span>
-        </div>
-        <Skeleton className="w-full h-64" />
-        <Card>
-          <CardHeader>
-            <Skeleton className="h-4 w-32" />
-          </CardHeader>
-          <CardContent className="space-y-2">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <Skeleton key={i} className="h-6 w-full" />
-            ))}
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
 
   const filteredKmlFiles = getFilteredKmlFiles();
 
@@ -922,13 +796,6 @@ export default function LeafletMap({
             請在下方圖層控制中選擇一個路線
           </span>
 
-          {user?.id &&
-            questionnaireId &&
-            routeAvailability.restricted.length > 0 && (
-              <Badge variant="secondary" className="text-xs">
-                {routeAvailability.restricted.length} 條路線已完成
-              </Badge>
-            )}
         </div>
         {value && (
           <div className="flex items-center gap-2">
@@ -959,81 +826,11 @@ export default function LeafletMap({
                 </div>
               </div>
 
-              {/* Display information about hidden/disabled routes */}
-              {/* Debug: Always show for testing - change back to conditional later */}
-              {true && (
-                <div className="mt-3 pt-3 border-t border-gray-100">
-                  <div className="text-xs text-gray-500 space-y-1">
-                    {routeAvailability.hidden?.length > 0 && (
-                      <div className="flex items-center gap-2">
-                        <Badge variant="secondary" className="text-xs">
-                          ⚠️ {routeAvailability.hidden.length} 條路線暫不可選
-                        </Badge>
-                        <div className="flex flex-wrap gap-1">
-                          {routeAvailability.hidden.map((hiddenRoute) => (
-                            <span
-                              key={hiddenRoute.id}
-                              className="text-xs text-gray-400"
-                              title={hiddenRoute.reason}
-                            >
-                              {hiddenRoute.type === "quota_full" ? "📊" : "✅"}{" "}
-                              {hiddenRoute.name}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                    {routeAvailability.restricted.length > 0 && (
-                      <div className="flex items-center gap-2">
-                        <Badge
-                          variant="outline"
-                          className="text-xs bg-yellow-50 text-yellow-600 border-yellow-200"
-                        >
-                          ⛔ {routeAvailability.restricted.length} 條路線已完成
-                        </Badge>
-                      </div>
-                    )}
-
-                    {/* Show message if no hidden/restricted routes */}
-                    {!routeAvailability.hidden?.length &&
-                      !routeAvailability.restricted.length && (
-                        <div className="flex items-center gap-2">
-                          <Badge
-                            variant="outline"
-                            className="text-xs bg-green-50 text-green-600 border-green-200"
-                          >
-                            ✅ 目前未滿額路線
-                          </Badge>
-                        </div>
-                      )}
-                  </div>
-
-                  {/* Legend - only show if there are hidden/restricted routes */}
-                  {(routeAvailability.hidden?.length > 0 ||
-                    routeAvailability.restricted.length > 0) && (
-                    <div className="mt-2 text-xs text-gray-400 space-y-1">
-                      <div className="text-gray-500 font-medium">
-                        圖示說明：
-                      </div>
-                      <div className="grid grid-cols-1 gap-1">
-                        <div>📊 該路線已達收集上限</div>
-                        <div>✅ 您已填寫過此路線</div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
             </CardHeader>
             <CardContent className="space-y-2">
               {filteredKmlFiles.map((kmlFile: any) => {
                 const status = kmlLoadingStatus.get(kmlFile.id);
                 const isSelected = selectedLayerId === kmlFile.id;
-                const isWarning = routeAvailability.warnings.some(
-                  (w) => w.id === kmlFile.id
-                );
-                const warningRoute = routeAvailability.warnings.find(
-                  (w) => w.id === kmlFile.id
-                );
 
                 return (
                   <div

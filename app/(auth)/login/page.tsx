@@ -51,8 +51,6 @@ export default function LoginPage() {
   const [resetEmail, setResetEmail] = useState("");
   const [isResettingPassword, setIsResettingPassword] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
-  const [showServiceCompletionModal, setShowServiceCompletionModal] =
-    useState(false);
   const { login, logout, hasRememberMeSession, user, isLoading } = useAuth();
   const router = useRouter();
   const [isEmailFocused, setIsEmailFocused] = useState(false);
@@ -172,7 +170,7 @@ export default function LoginPage() {
     }
   }, [user, pendingVerificationEmail]);
 
-  // Effect to show service completion modal for non-admin users after login
+  // Effect to redirect logged-in users to dashboard
   useEffect(() => {
     if (user && !isLoading) {
       console.log("🔍 Checking user role after login:", user.role);
@@ -180,11 +178,8 @@ export default function LoginPage() {
         console.log("🔧 Admin user detected, redirecting to dashboard...");
         router.push("/dashboard");
       } else {
-        console.log(
-          "👤 Normal user detected, showing service completion modal and staying on login page..."
-        );
-        setShowServiceCompletionModal(true);
-        // Normal users stay on the login page with the modal
+        console.log("👤 Normal user detected, redirecting to dashboard...");
+        router.push("/dashboard");
       }
     }
   }, [user, isLoading, router]);
@@ -232,21 +227,19 @@ export default function LoginPage() {
           <>
             <DefaultIcon
               className={`w-5 h-5 transition-all duration-300 absolute top-0 left-0 ${
-                showOriginalIcon
-                  ? "opacity-100 scale-100"
-                  : "opacity-0 scale-95"
+                showOriginalIcon ? "opacity-100" : "opacity-0"
               } ${isFocused ? "text-gray-600" : "text-gray-400"}`}
             />
             <CheckCircle2
               className={`w-5 h-5 transition-all duration-300 absolute top-0 left-0 ${
-                isValid ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                isValid ? "opacity-100" : "opacity-0"
               } ${isFocused ? "text-green-500" : "text-green-400"}`}
             />
           </>
         ) : (
           <DefaultIcon
             className={`w-5 h-5 transition-all duration-300 ${
-              isFocused ? "text-gray-600 scale-110" : "text-gray-400"
+              isFocused ? "text-gray-600" : "text-gray-400"
             }`}
           />
         )}
@@ -567,7 +560,7 @@ export default function LoginPage() {
       <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative">
         <Banner
           className="absolute top-0 left-0 w-full h-full -z-10"
-          backgroundVideo="/dynamic-background/lady-bike-grass.mp4"
+          backgroundVideo="/dynamic-background/landing-bg.mp4"
         />
         <Card className="w-full max-w-2xl rounded-2xl" glass animate>
           <CardContent className="text-center py-12">
@@ -583,12 +576,12 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative">
       <Banner
         className="absolute top-0 left-0 w-full h-full -z-10"
-        backgroundVideo="/dynamic-background/lady-bike-grass.mp4"
+        backgroundVideo="/dynamic-background/landing-bg.mp4"
       />
       <Card className="w-full max-w-2xl rounded-2xl" glass animate>
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold text-gray-800">
-            乘跡｜騎行體驗分享平台
+            乘跡｜計程車服務品質評核平台
           </CardTitle>
           <CardDescription>登入或註冊以存取您的體驗</CardDescription>
         </CardHeader>
@@ -685,8 +678,8 @@ export default function LoginPage() {
                 <Button
                   type="submit"
                   className="w-full bg-gradient-to-b from-gray-800 to-gray-950 
-                  hover:from-gray-700 hover:to-gray-800 transition-all duration-500 
-                  shadow-md hover:shadow-lg transform hover:-translate-y-0.5 hover:text-base
+                  transition-all duration-500 
+                  shadow-md
                   rounded-xl"
                   disabled={isFormLoading}
                 >
@@ -697,7 +690,7 @@ export default function LoginPage() {
                   <button
                     type="button"
                     onClick={() => setShowForgotPassword(true)}
-                    className="text-sm text-blue-600 hover:text-blue-800 underline"
+                    className="text-sm text-blue-600 underline"
                   >
                     忘記密碼？
                   </button>
@@ -802,8 +795,8 @@ export default function LoginPage() {
                 <Button
                   type="button"
                   className="w-full bg-gradient-to-b from-blue-500 to-blue-600 
-                  hover:from-blue-500 hover:to-blue-600 transition-all duration-500 
-                  shadow-md hover:shadow-lg transform hover:-translate-y-0.5 hover:text-base
+                  transition-all duration-500 
+                  shadow-md
                   rounded-xl"
                   onClick={() => setShowInfoModal(true)}
                 >
@@ -813,8 +806,8 @@ export default function LoginPage() {
                 <Button
                   type="submit"
                   className="w-full bg-gradient-to-b from-gray-800 to-gray-950 
-                  hover:from-gray-700 hover:to-gray-800 transition-all duration-500 
-                  shadow-md hover:shadow-lg transform hover:-translate-y-0.5 hover:text-base
+                  transition-all duration-500 
+                  shadow-md
                   rounded-xl"
                   disabled={isFormLoading}
                 >
@@ -855,7 +848,7 @@ export default function LoginPage() {
                       disabled={resendCooldown > 0 || isResendingVerification}
                       variant="outline"
                       size="sm"
-                      className="text-blue-700 border-blue-300 hover:bg-blue-100"
+                      className="text-blue-700 border-blue-300"
                     >
                       {isResendingVerification
                         ? "發送中..."
@@ -963,7 +956,7 @@ export default function LoginPage() {
                   </h4>
                   <p className="text-gray-600 pt-2">
                     您的電子郵件將用於接收我們發送的 Line Points
-                    獎勵。這是我們回饋參與問卷調查活動的方式，確保您能及時收到應得的獎勵。
+                    獎勵。這是我們回饋參與評鑑調查活動的方式，確保您能及時收到應得的獎勵。
                   </p>
                 </div>
               </div>
@@ -977,7 +970,7 @@ export default function LoginPage() {
                     密碼安全
                   </h4>
                   <p className="text-gray-600 pt-2">
-                    我們不會收集或儲存您的密碼。您需要記住自己的密碼，這樣才能持續參與問卷調查活動。請選擇一個安全且容易記住的密碼。
+                    我們不會收集或儲存您的密碼。您需要記住自己的密碼，這樣才能持續參與評鑑調查活動。請選擇一個安全且容易記住的密碼。
                   </p>
                 </div>
               </div>
@@ -991,7 +984,7 @@ export default function LoginPage() {
                     個人資料
                   </h4>
                   <p className="text-gray-600 pt-2">
-                    您的個人資料僅用於問卷調查活動的統計分析，我們承諾保護您的隱私，不會將資料提供給第三方。
+                    您的個人資料僅用於評鑑調查活動的統計分析，我們承諾保護您的隱私，不會將資料提供給第三方。
                   </p>
                 </div>
               </div>
@@ -1010,104 +1003,12 @@ export default function LoginPage() {
             <Button
               onClick={() => setShowInfoModal(false)}
               className="w-full bg-gradient-to-b from-blue-500 to-blue-600 
-                  hover:from-blue-500 hover:to-blue-600 transition-all duration-500 
-                  shadow-md hover:shadow-lg transform hover:-translate-y-0.5 hover:text-base
+                  transition-all duration-500 
+                  shadow-md
                   rounded-xl"
             >
               我了解了
             </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      {/* Service Completion Modal */}
-      <Dialog open={showServiceCompletionModal} onOpenChange={() => {}} modal>
-        <DialogContent
-          className="max-w-[90%] sm:max-w-lg px-6 py-8 rounded-xl"
-          onPointerDownOutside={(e) => e.preventDefault()}
-          onEscapeKeyDown={(e) => e.preventDefault()}
-        >
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-center text-gray-800 mb-2">
-              🎉 服務已完成
-            </DialogTitle>
-            <DialogDescription className="text-center text-gray-600 text-base">
-              感謝您的參與與支持
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="space-y-6 text-center">
-            {/* Main message */}
-            <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-xl p-6">
-              <div className="flex justify-center mb-4">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-                  <CheckCircle2 className="w-8 h-8 text-green-600" />
-                </div>
-              </div>
-
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                乘跡調查活動已圓滿結束
-              </h3>
-
-              <p className="text-gray-700 leading-relaxed mb-4">
-                感謝您對乘跡平台的支持與參與！我們的問卷調查活動已經成功完成，
-                目前系統暫時停止服務以進行數據整理與分析。
-              </p>
-
-              <p className="text-sm text-gray-600 mb-4">
-                點擊下方按鈕後，您將被登出並回到登入頁面。
-              </p>
-
-              <div className="bg-white rounded-lg p-4 border border-gray-200">
-                <p className="text-sm text-gray-600">
-                  💡 <strong>重要提醒：</strong>
-                  <br />
-                  如果您已參與調查，Line Points
-                  獎勵將於數據處理完成後發送至您的電子郵件。 預計處理時間為 1-2
-                  週，請耐心等候。
-                </p>
-              </div>
-            </div>
-
-            {/* Thank you message */}
-            <div className="space-y-3">
-              <p className="text-gray-700 font-medium">
-                🙏 再次感謝您的寶貴意見與時間
-              </p>
-              <p className="text-sm text-gray-600">
-                您的參與讓我們能夠更好地了解騎行需求，為未來的服務改進提供重要依據。
-              </p>
-            </div>
-
-            {/* Contact information */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <p className="text-sm text-blue-800">
-                📧 如有任何問題，請聯繫：{" "}
-                <a
-                  href="mailto:support@bike-life.net"
-                  className="font-medium underline hover:text-blue-900"
-                >
-                  support@bike-life.net
-                </a>
-              </p>
-            </div>
-
-            {/* Close button */}
-            <div className="pt-4">
-              <Button
-                onClick={() => {
-                  setShowServiceCompletionModal(false);
-                  // Log out the user and stay on login page
-                  logout();
-                }}
-                className="w-full bg-gradient-to-r from-gray-800 to-gray-900 
-                    hover:from-gray-700 hover:to-gray-800 transition-all duration-300 
-                    shadow-lg hover:shadow-xl transform hover:-translate-y-0.5
-                    rounded-xl py-3 text-base font-medium"
-              >
-                我知道了
-              </Button>
-            </div>
           </div>
         </DialogContent>
       </Dialog>
@@ -1117,10 +1018,10 @@ export default function LoginPage() {
         <p className="text-sm text-white">
           需要協助？請聯繫我們：{" "}
           <a
-            href="mailto:support@bike-life.net"
-            className="text-blue-200 hover:text-blue-400 underline font-medium"
+            href="mailto:support@taxi-life.net"
+            className="text-blue-200 underline font-medium"
           >
-            support@bike-life.net
+            support@taxi-life.net
           </a>
         </p>
       </footer>

@@ -3,6 +3,11 @@ import type { QuestionnaireTemplate } from './types'
 import { selfInfoSurvey } from './self-info-survey'
 import { cyclingSurvey2025 } from './cycling-survey-2025'
 import { diverseCyclingSurvey2025 } from './diverse-cycling-survey-2025'
+import { taipeiTaxiServiceQualitySurvey } from './taipei-taxi-service-quality-survey'
+import { newTaipeiTaxiServiceQualitySurvey } from './new-taipei-taxi-service-quality-survey'
+import { taoyuanTaxiServiceQualitySurvey } from './taoyuan-taxi-service-quality-survey'
+import { taichungTaxiServiceQualitySurvey } from './taichung-taxi-service-quality-survey'
+import { kaohsiungTaxiServiceQualitySurvey } from './kaohsiung-taxi-service-quality-survey'
 
 /**
  * Registry of all available questionnaires
@@ -11,6 +16,11 @@ const questionnaireRegistry: QuestionnaireTemplate[] = [
     selfInfoSurvey,
     cyclingSurvey2025,
     diverseCyclingSurvey2025,
+    taipeiTaxiServiceQualitySurvey,
+    newTaipeiTaxiServiceQualitySurvey,
+    taoyuanTaxiServiceQualitySurvey,
+    taichungTaxiServiceQualitySurvey,
+    kaohsiungTaxiServiceQualitySurvey,
 ]
 
 /**
@@ -49,4 +59,13 @@ export function getQuestionnairesByCategory(category: string): Questionnaire[] {
 /**
  * Export individual questionnaires for direct access
  */
-export { selfInfoSurvey, cyclingSurvey2025, diverseCyclingSurvey2025 }
+export { 
+  selfInfoSurvey, 
+  cyclingSurvey2025, 
+  diverseCyclingSurvey2025, 
+  taipeiTaxiServiceQualitySurvey,
+  newTaipeiTaxiServiceQualitySurvey,
+  taoyuanTaxiServiceQualitySurvey,
+  taichungTaxiServiceQualitySurvey,
+  kaohsiungTaxiServiceQualitySurvey,
+}

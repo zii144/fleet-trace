@@ -6,7 +6,6 @@ import { AuthProvider } from "@/components/auth/AuthProvider";
 import UpdateNotification from "@/components/UpdateNotification";
 import { Toaster } from "@/components/ui/toaster";
 import { AppFooter } from "@/components/AppFooter";
-import { DebugUtilsInitializer } from "@/components/DebugUtilsInitializer";
 
 const notoSansTC = Noto_Sans_TC({
   weight: ["400", "500", "700"],
@@ -32,14 +31,14 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bike-life.net"),
-  title: "乘跡｜騎行體驗分享平台",
+  title: "乘跡｜計程車服務品質評核平台",
   description:
-    "乘跡，台灣首創的騎行體驗分享平台。結合數據分析與問卷回饋，讓每一段旅程都成為台灣單車文化的軌跡。",
+    "乘跡，計程車服務品質評核平台。結合數據分析與評鑑調查回饋，提升計程車服務品質。",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "乘跡｜騎行體驗分享平台",
+    title: "乘跡｜計程車服務品質評核平台",
   },
   formatDetection: {
     telephone: false,
@@ -47,10 +46,10 @@ export const metadata: Metadata = {
   // Enhanced Open Graph for social media sharing
   openGraph: {
     type: "website",
-    siteName: "乘跡｜騎行體驗分享平台",
-    title: "乘跡｜騎行體驗分享平台 - 台灣單車文化軌跡",
+    siteName: "乘跡｜計程車服務品質評核平台",
+    title: "乘跡｜計程車服務品質評核平台",
     description:
-      "乘跡，台灣首創的騎行體驗分享平台。結合數據分析與問卷回饋，讓每一段旅程都成為台灣單車文化的軌跡。探索台灣最美的單車路線，分享你的騎行故事。",
+      "乘跡，計程車服務品質評核平台。結合數據分析與評鑑調查回饋，提升計程車服務品質。",
     url: "https://bike-life.net",
     locale: "zh_TW",
     images: [
@@ -75,9 +74,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@bikelife_tw",
     creator: "@bikelife_tw",
-    title: "乘跡｜騎行體驗分享平台 - 台灣單車文化軌跡",
+    title: "乘跡｜計程車服務品質評核平台",
     description:
-      "乘跡，台灣首創的騎行體驗分享平台。結合數據分析與問卷回饋，讓每一段旅程都成為台灣單車文化的軌跡。",
+      "乘跡，計程車服務品質評核平台。結合數據分析與評鑑調查回饋，提升計程車服務品質。",
     images: ["/social-share-banner.png"],
   },
   // Additional social media meta tags
@@ -87,13 +86,13 @@ export const metadata: Metadata = {
     "instagram:creator": "@bikelife_tw",
     "linkedin:owner": "your-linkedin-company-id", // Replace with your LinkedIn Company ID
     // LINE-specific optimizations
-    "line:title": "乘跡｜騎行體驗分享平台 - 台灣單車文化軌跡",
+    "line:title": "乘跡｜計程車服務品質評核平台",
     "line:description":
-      "乘跡，台灣首創的騎行體驗分享平台。結合數據分析與問卷回饋，讓每一段旅程都成為台灣單車文化的軌跡。",
+      "乘跡，計程車服務品質評核平台。結合數據分析與評鑑調查回饋，提升計程車服務品質。",
     "line:image": "https://bike-life.net/social-share-banner.png",
     "line:url": "https://bike-life.net",
     // Additional LINE optimizations
-    "line:site_name": "乘跡｜騎行體驗分享平台",
+    "line:site_name": "乘跡｜計程車服務品質評核平台",
     "line:type": "website",
     // WhatsApp Business API (if applicable)
     "whatsapp:business": "your-whatsapp-business-id",
@@ -102,7 +101,7 @@ export const metadata: Metadata = {
     "單車",
     "騎行",
     "台灣",
-    "問卷",
+    "評鑑調查",
     "數據分析",
     "乘跡",
     "bike-life",
@@ -139,15 +138,16 @@ export default function RootLayout({
       className={`overflow-x-hidden ${notoSansTC.variable} ${roboto.variable}`}
     >
       <head>
-        <meta name="application-name" content="問卷平台" />
+        <meta name="application-name" content="評鑑調查平台" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="問卷平台" />
+        <meta name="apple-mobile-web-app-title" content="評鑑調查平台" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="msapplication-tap-highlight" content="no" />
+
         <link rel="apple-touch-icon" href="/icon-192x192.png" />
         <link
           rel="icon"
@@ -166,7 +166,7 @@ export default function RootLayout({
       </head>
       <body className="overflow-x-hidden min-h-screen font-sans animated-gradient-background">
         <UpdateNotification />
-        <DebugUtilsInitializer />
+
         <AuthProvider>
           <div className="flex flex-col min-h-screen">
             <main className="flex-1">{children}</main>

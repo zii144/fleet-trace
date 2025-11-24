@@ -109,7 +109,7 @@ const questionTypes: QuestionTypeOption[] = [
     description: "在地圖上選擇地點或路線",
     icon: <Map className="w-5 h-5" />,
     category: "advanced",
-    features: ["KML 支援", "多點選擇"],
+    features: ["多點選擇"],
   },
   {
     type: "time",

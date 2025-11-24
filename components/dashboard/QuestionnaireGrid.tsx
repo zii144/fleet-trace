@@ -23,12 +23,12 @@ export function QuestionnaireGrid({
         <CardContent className="text-center py-12 bg-red-200">
           <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
           <h3 className="text-lg font-semibold text-gray-900 mb-2">
-            沒有可用的問卷
+            沒有可用的評鑑調查
           </h3>
           <p className="text-gray-600">
             {user?.role === "admin"
-              ? "在管理面板中建立您的第一個問卷。"
-              : "請稍後再查看新問卷。"}
+              ? "在管理面板中建立您的第一個評鑑調查。"
+              : "請稍後再查看新評鑑調查。"}
           </p>
         </CardContent>
       </Card>

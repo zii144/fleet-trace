@@ -461,7 +461,7 @@ export function QuestionBuilder({
             <div>
               <Label className="text-xs sm:text-sm font-medium">地圖選項</Label>
               <p className="text-xs text-gray-500 mt-1">
-                地圖問題需要在問題詳細設定中配置 KML 檔案和選項
+                地圖問題需要在問題詳細設定中配置選項
               </p>
             </div>
           </div>

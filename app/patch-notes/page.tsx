@@ -454,7 +454,7 @@ export default function PatchNotesPage() {
               href="mailto:zii@iactor.com.tw"
               className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
             >
-              support@bike-life.net
+              support@taxi-life.net
             </a>
             <a
               href="https://github.com/zii144/fleet-trace/issues"

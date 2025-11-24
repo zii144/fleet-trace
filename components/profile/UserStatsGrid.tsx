@@ -34,7 +34,7 @@ export function UserStatsGrid({ stats }: UserStatsGridProps) {
   const getPerformanceLevel = (performance: number) => {
     if (performance >= 60) return { level: "優秀", color: "text-green-600" };
     if (performance >= 30) return { level: "可進步", color: "text-yellow-600" };
-    return { level: "未完成任何問卷", color: "text-red-600" };
+    return { level: "未完成任何評鑑調查", color: "text-red-600" };
   };
 
   const performance = getPerformanceLevel(stats.availableQuestionnaireRate);
@@ -92,7 +92,7 @@ export function UserStatsGrid({ stats }: UserStatsGridProps) {
       {/* 
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">可用問卷填寫率</CardTitle>
+          <CardTitle className="text-sm font-medium">可用評鑑調查填寫率</CardTitle>
           <Target className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
@@ -113,7 +113,7 @@ export function UserStatsGrid({ stats }: UserStatsGridProps) {
       {/*
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">問卷填寫總字數</CardTitle>
+          <CardTitle className="text-sm font-medium">評鑑調查填寫總字數</CardTitle>
           <Trophy className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
@@ -121,7 +121,7 @@ export function UserStatsGrid({ stats }: UserStatsGridProps) {
             {stats.totalCharactersWritten || "數據未提供"}字
           </div>
           <p className="text-xs text-muted-foreground mt-1">
-            於問卷中填寫文宇的總數
+            於評鑑調查中填寫文宇的總數
           </p>
         </CardContent>
       </Card>
@@ -175,7 +175,7 @@ export function UserStatsGrid({ stats }: UserStatsGridProps) {
           <div className="text-2xl font-bold text-purple-600">{stats.rank}</div>
           <p className="text-xs text-muted-foreground mt-1">
             {stats.totalSubmissions < 10 &&
-              `還需完成問卷 ${10 - stats.totalSubmissions} 份以達成升級條件`}
+              `還需完成評鑑調查 ${10 - stats.totalSubmissions} 份以達成升級條件`}
             {stats.totalSubmissions >= 10 &&
               stats.totalSubmissions < 15 &&
               `還需 ${15 - stats.totalSubmissions} 份以達成升級條件`}
@@ -206,7 +206,7 @@ export function UserStatsGrid({ stats }: UserStatsGridProps) {
               {formatTime(stats.totalTimeSpent)}
             </div>
             <p className="text-xs text-muted-foreground mt-1">
-              平均每份問卷：{formatTime(stats.averageTimePerQuestionnaire || 0)}
+              平均每份評鑑調查：{formatTime(stats.averageTimePerQuestionnaire || 0)}
             </p>
           </CardContent>
         </Card>
@@ -218,7 +218,7 @@ export function UserStatsGrid({ stats }: UserStatsGridProps) {
       {stats.qualityScore !== undefined && (
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">問卷品質分數</CardTitle>
+            <CardTitle className="text-sm font-medium">評鑑調查品質分數</CardTitle>
             <BarChart3 className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -274,7 +274,7 @@ export function UserStatsGrid({ stats }: UserStatsGridProps) {
               {stats.perfectCompletions}次
             </div>
             <p className="text-xs text-muted-foreground mt-1">
-              100% 完成率的問卷次數
+              100% 完成率的評鑑調查次數
             </p>
           </CardContent>
         </Card>

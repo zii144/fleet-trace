@@ -269,7 +269,7 @@ export class ProfileService {
         {
           id: 'first_submission',
           name: '初次提交',
-          description: '完成第一份問卷',
+          description: '完成第一份評鑑調查',
           achieved: stats.totalSubmissions > 0,
           achievedAt: stats.totalSubmissions > 0 ? stats.lastSubmission : undefined
         },
@@ -283,13 +283,13 @@ export class ProfileService {
         {
           id: 'perfect_completion',
           name: '完美完成',
-          description: '完成一份100%的問卷',
+          description: '完成一份100%的評鑑調查',
           achieved: (stats.perfectCompletions || 0) > 0
         },
         {
           id: 'streak_master',
           name: '連續大師',
-          description: '連續完成7份問卷',
+          description: '連續完成7份評鑑調查',
           achieved: (stats.completionStreak || 0) >= 7,
           progress: Math.min(100, ((stats.completionStreak || 0) / 7) * 100)
         },

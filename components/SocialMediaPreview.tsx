@@ -18,8 +18,8 @@ interface SocialMediaPreviewProps {
 }
 
 export function SocialMediaPreview({
-  defaultTitle = "乘跡｜騎行體驗分享平台 - 台灣單車文化軌跡",
-  defaultDescription = "乘跡，台灣首創的騎行體驗分享平台。結合數據分析與問卷回饋，讓每一段旅程都成為台灣單車文化的軌跡。",
+  defaultTitle = "乘跡｜計程車服務品質評核平台",
+  defaultDescription = "乘跡，計程車服務品質評核平台。結合數據分析與評鑑調查回饋，提升計程車服務品質。",
   defaultImage = "/social-share-banner.png",
   defaultUrl = "https://bike-life.net",
 }: SocialMediaPreviewProps) {

@@ -570,7 +570,7 @@ export function QuestionnairePreview({
       )}
 
       <div className="text-center pt-8">
-        <Button size="lg">提交問卷（預覽模式）</Button>
+        <Button size="lg">提交評鑑調查（預覽模式）</Button>
       </div>
     </div>
   );

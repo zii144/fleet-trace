@@ -51,25 +51,25 @@ export class QuestionnaireQualificationService {
     {
       id: "new-taipei-taxi-service-quality-survey",
       title: "新北市計程車服務品質評鑑調查",
-      prerequisites: ["self-info-survey"],
+      prerequisites: [],
       requiresEmailVerification: true,
     },
     {
       id: "taoyuan-taxi-service-quality-survey",
       title: "桃園市計程車服務品質評鑑調查",
-      prerequisites: ["self-info-survey"],
+      prerequisites: [],
       requiresEmailVerification: true,
     },
     {
       id: "taichung-taxi-service-quality-survey",
       title: "臺中市計程車服務品質評鑑調查",
-      prerequisites: ["self-info-survey"],
+      prerequisites: [],
       requiresEmailVerification: true,
     },
     {
       id: "kaohsiung-taxi-service-quality-survey",
       title: "高雄市計程車服務品質評鑑調查",
-      prerequisites: ["self-info-survey"],
+      prerequisites: [],
       requiresEmailVerification: true,
     },
   ];

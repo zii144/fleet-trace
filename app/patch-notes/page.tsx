@@ -131,7 +131,7 @@ export default function PatchNotesPage() {
                 更新日誌
               </h1>
               <p className="text-muted-foreground">
-                查看騎跡平台的所有版本更新和功能改進
+                查看乘跡平台的所有版本更新和功能改進
               </p>
             </div>
 

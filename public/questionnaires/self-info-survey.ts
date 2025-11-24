@@ -3,7 +3,7 @@ import type { QuestionnaireTemplate } from "./types"
 export const selfInfoSurvey: QuestionnaireTemplate = {
   id: "self-info-survey",
   title: "使用者基本資料收集問卷",
-  description: "本問卷為騎跡平台的使用者基本資料收集問卷，請您協助填寫。請各位騎士建立個人資料後，即可開始提供使用經驗回饋。",
+  description: "本問卷為乘跡平台的使用者基本資料收集問卷，請您協助填寫。請各位騎士建立個人資料後，即可開始提供使用經驗回饋。",
   banner: "/banner-video/self-info-survey.mp4", // !! Video
   version: "1.0.0",
   organize: "交通部運輸研究所",

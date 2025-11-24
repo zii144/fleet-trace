@@ -21,11 +21,11 @@ export function DashboardHeader({
           <div className="min-w-0 flex-1 pr-4">
             {/* Desktop title */}
             <h1 className="hidden lg:block text-3xl font-bold text-gray-900 truncate">
-              書寫騎跡
+              書寫乘跡
             </h1>
             {/* Mobile/Tablet logo/short title */}
             <h1 className="lg:hidden text-xl sm:text-2xl font-bold text-gray-900 truncate">
-              書寫騎跡
+              書寫乘跡
             </h1>
             {/* Desktop welcome message */}
             <p className="hidden lg:block text-gray-600 truncate mt-1">

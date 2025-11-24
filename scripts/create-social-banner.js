@@ -15,7 +15,7 @@ const bannerConfig = {
   backgroundColor: "#1a1a1a",
   primaryColor: "#00ff88",
   secondaryColor: "#ffffff",
-  title: "騎跡",
+  title: "乘跡",
   subtitle: "台灣單車文化軌跡",
   description: "騎行體驗分享平台",
   tagline: "讓每一段旅程都成為台灣單車文化的軌跡",

@@ -144,7 +144,7 @@ function generateBannerHTML() {
     </div>
     
     <div class="content">
-      <h1 class="title">騎跡</h1>
+      <h1 class="title">乘跡</h1>
       <h2 class="subtitle">台灣單車文化軌跡</h2>
       <p class="description">騎行體驗分享平台</p>
       <p class="tagline">讓每一段旅程都成為台灣單車文化的軌跡</p>

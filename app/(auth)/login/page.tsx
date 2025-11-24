@@ -588,7 +588,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-2xl rounded-2xl" glass animate>
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold text-gray-800">
-            騎跡｜騎行體驗分享平台
+            乘跡｜騎行體驗分享平台
           </CardTitle>
           <CardDescription>登入或註冊以存取您的體驗</CardDescription>
         </CardHeader>
@@ -1046,11 +1046,11 @@ export default function LoginPage() {
               </div>
 
               <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                騎跡調查活動已圓滿結束
+                乘跡調查活動已圓滿結束
               </h3>
 
               <p className="text-gray-700 leading-relaxed mb-4">
-                感謝您對騎跡平台的支持與參與！我們的問卷調查活動已經成功完成，
+                感謝您對乘跡平台的支持與參與！我們的問卷調查活動已經成功完成，
                 目前系統暫時停止服務以進行數據整理與分析。
               </p>
 

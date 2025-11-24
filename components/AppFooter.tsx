@@ -40,7 +40,7 @@ export function AppFooter({
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
               <div>
-                <h3 className="font-semibold text-foreground">騎跡</h3>
+                <h3 className="font-semibold text-foreground">乘跡</h3>
                 <p className="text-xs text-muted-foreground">
                   騎行體驗分享平台
                 </p>

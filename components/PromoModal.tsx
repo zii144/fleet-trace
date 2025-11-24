@@ -139,7 +139,7 @@ export function PromoModal({
             </div>
             <div>
               <DialogTitle className="text-xl font-bold text-gray-900 dark:text-gray-100">
-                騎跡旅程意見調查活動
+                乘跡旅程意見調查活動
               </DialogTitle>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                 分享您的騎乘經驗，獲得豐富獎勵
@@ -153,7 +153,7 @@ export function PromoModal({
           <Card className="border-l-4 border-l-blue-500 bg-blue-50 dark:bg-blue-950">
             <CardContent className="p-4">
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                感謝您使用環島自行車路線完成騎跡旅程！為了解您的使用感受，做為未來改善參考，
+                感謝您使用環島自行車路線完成乘跡旅程！為了解您的使用感受，做為未來改善參考，
                 請您撥空加入意見調查活動。
               </p>
             </CardContent>

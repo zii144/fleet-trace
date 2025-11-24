@@ -5,7 +5,7 @@ import { useEffect } from "react";
 export default function ImageTestPage() {
   useEffect(() => {
     // Set the page title dynamically
-    document.title = "Image Test - 騎跡";
+    document.title = "Image Test - 乘跡";
   }, []);
 
   const images = [

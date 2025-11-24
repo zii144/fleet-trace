@@ -5,7 +5,6 @@ import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import { QuestionnaireBuilder } from "@/components/admin/QuestionnaireBuilder";
 import { AdminManagementTable } from "@/components/admin/AdminManagementTable";
 import UserInfoManagement from "@/components/admin/UserInfoManagement";
-import { RouteCompletionManagement } from "@/components/admin/RouteCompletionManagement";
 import { useAuth } from "@/components/auth/AuthProvider";
 import {
   getQuestionnaires,
@@ -175,9 +174,6 @@ export default function AdminPage() {
                     <Database className="w-4 h-4 mr-2" />
                     數據管理
                   </TabsTrigger>
-                  <TabsTrigger value="route-completion">
-                    路線配額管理
-                  </TabsTrigger>
                   <TabsTrigger value="user-info">用戶資料</TabsTrigger>
                   <TabsTrigger value="questionnaires">問卷管理</TabsTrigger>
                   {/* <TabsTrigger value="responses">回覆記錄</TabsTrigger> */}
@@ -324,9 +320,6 @@ export default function AdminPage() {
                   <AdminManagementTable userRole={user?.role || "user"} />
                 </TabsContent>
 
-                <TabsContent value="route-completion" className="space-y-6">
-                  <RouteCompletionManagement userRole={user?.role || "user"} />
-                </TabsContent>
 
                 <TabsContent value="user-info" className="space-y-6">
                   <UserInfoManagement />

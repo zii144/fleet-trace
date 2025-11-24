@@ -3,7 +3,6 @@ import type { QuestionnaireTemplate } from './types'
 import { selfInfoSurvey } from './self-info-survey'
 import { cyclingSurvey2025 } from './cycling-survey-2025'
 import { diverseCyclingSurvey2025 } from './diverse-cycling-survey-2025'
-import { getKMLFilesByCategory } from '@/lib/kml-config'
 
 /**
  * Registry of all available questionnaires
@@ -15,71 +14,36 @@ const questionnaireRegistry: QuestionnaireTemplate[] = [
 ]
 
 /**
- * Injects KML files into questionnaire based on the kmlCategory
+ * Convert template to questionnaire (KML injection removed)
  */
-function injectKMLFiles(questionnaire: QuestionnaireTemplate): Questionnaire {
-  const processedQuestionnaire = { ...questionnaire }
-  
-  // Find map questions and inject appropriate KML files
-  processedQuestionnaire.sections = questionnaire.sections.map(section => ({
-    ...section,
-    questions: section.questions.map(question => {
-      if (question.type === 'map' && questionnaire.kmlCategory) {
-        let kmlFiles: any[] = []
-        
-        if (Array.isArray(questionnaire.kmlCategory)) {
-          // Handle multiple categories
-          questionnaire.kmlCategory.forEach(category => {
-            const categoryFiles = getKMLFilesByCategory(category)
-            kmlFiles = [...kmlFiles, ...categoryFiles]
-          })
-        } else {
-          // Handle single category
-          kmlFiles = getKMLFilesByCategory(questionnaire.kmlCategory)
-        }
-        
-        return {
-          ...question,
-          kmlFiles
-        }
-      }
-      return question
-    })
-  }))
-  
+function processQuestionnaire(questionnaire: QuestionnaireTemplate): Questionnaire {
   // Remove the kmlCategory property from the final questionnaire
-  const { kmlCategory, ...finalQuestionnaire } = processedQuestionnaire
+  const { kmlCategory, ...finalQuestionnaire } = questionnaire
   return finalQuestionnaire as Questionnaire
 }
 
 /**
- * Get all available questionnaires with KML files injected
+ * Get all available questionnaires
  */
 export function getAllQuestionnaires(): Questionnaire[] {
-  return questionnaireRegistry.map(injectKMLFiles)
+  return questionnaireRegistry.map(processQuestionnaire)
 }
 
 /**
- * Get a specific questionnaire by ID with KML files injected
+ * Get a specific questionnaire by ID
  */
 export function getQuestionnaireById(id: string): Questionnaire | undefined {
   const template = questionnaireRegistry.find(q => q.id === id)
-  return template ? injectKMLFiles(template) : undefined
+  return template ? processQuestionnaire(template) : undefined
 }
 
 /**
- * Get questionnaires by category
+ * Get questionnaires by category (KML category removed, returns all if category matches)
  */
 export function getQuestionnairesByCategory(category: string): Questionnaire[] {
-  return questionnaireRegistry
-    .filter(q => {
-      if (!q.kmlCategory) return false
-      if (Array.isArray(q.kmlCategory)) {
-        return q.kmlCategory.includes(category)
-      }
-      return q.kmlCategory === category
-    })
-    .map(injectKMLFiles)
+  // Since KML categories are removed, this function is kept for compatibility
+  // but returns all questionnaires
+  return questionnaireRegistry.map(processQuestionnaire)
 }
 
 /**

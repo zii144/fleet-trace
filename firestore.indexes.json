@@ -157,20 +157,6 @@
       ]
     },
     {
-      "collectionGroup": "questionnaire_submissions",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "routeId",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "submittedAt",
-          "order": "DESCENDING"
-        }
-      ]
-    },
-    {
       "collectionGroup": "user_stats",
       "queryScope": "COLLECTION",
       "fields": [

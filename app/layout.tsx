@@ -6,6 +6,7 @@ import { AuthProvider } from "@/components/auth/AuthProvider";
 import UpdateNotification from "@/components/UpdateNotification";
 import { Toaster } from "@/components/ui/toaster";
 import { AppFooter } from "@/components/AppFooter";
+import { DebugUtilsInitializer } from "@/components/DebugUtilsInitializer";
 
 const notoSansTC = Noto_Sans_TC({
   weight: ["400", "500", "700"],
@@ -165,6 +166,7 @@ export default function RootLayout({
       </head>
       <body className="overflow-x-hidden min-h-screen font-sans animated-gradient-background">
         <UpdateNotification />
+        <DebugUtilsInitializer />
         <AuthProvider>
           <div className="flex flex-col min-h-screen">
             <main className="flex-1">{children}</main>
@@ -184,13 +186,6 @@ export default function RootLayout({
                       console.log('SW 註冊失敗: ', err);
                     });
                 });
-              }
-              
-              // Initialize debug utilities
-              ${
-                process.env.NODE_ENV === "development"
-                  ? 'window.addEventListener("load", () => { import("/lib/debug-utils").then(module => module.initDebugUtils()); });'
-                  : ""
               }
             `,
           }}

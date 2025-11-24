@@ -24,8 +24,6 @@ import { Progress } from "@/components/ui/progress";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { submitQuestionnaireResponse } from "@/lib/user-profile";
-import { routeSubmissionService } from "@/lib/services/RouteSubmissionService";
-import { routeCompletionService } from "@/lib/services/RouteCompletionService";
 import { useRouter } from "next/navigation";
 import { useQuestionScroll } from "@/hooks/use-question-scroll";
 import { useToast } from "@/components/ui/use-toast";
@@ -557,76 +555,7 @@ export function QuestionnaireForm({ questionnaire }: QuestionnaireFormProps) {
       // Submit the questionnaire response first
       await submitQuestionnaireResponse(user.id, response);
 
-      // Handle route submission tracking if enabled
-      if (questionnaire.routeTracking?.enabled) {
-        try {
-          const routeSelectionQuestionId =
-            questionnaire.routeTracking.routeSelectionQuestionId;
-          const selectedRouteName = responses[routeSelectionQuestionId];
-
-          if (selectedRouteName) {
-            // Find the route ID from the questionnaire's KML files
-            const routeQuestion = questionnaire.sections
-              .flatMap((section) => section.questions)
-              .find((q) => q.id === routeSelectionQuestionId);
-
-            let selectedRouteId: string | undefined;
-            let routeName = selectedRouteName;
-
-            if (
-              routeQuestion &&
-              routeQuestion.type === "map" &&
-              routeQuestion.kmlFiles
-            ) {
-              const selectedRoute = routeQuestion.kmlFiles.find(
-                (kml: any) => kml.name === selectedRouteName
-              );
-              selectedRouteId = selectedRoute?.id;
-              routeName = selectedRoute?.name || selectedRouteName;
-            }
-
-            // Check route completion limit before recording submission
-            if (selectedRouteId) {
-              const isRouteFull = await routeCompletionService.isRouteFull(
-                selectedRouteId,
-                questionnaire.id
-              );
-
-              if (isRouteFull) {
-                // Check if we should block submission based on completion limit rules
-                const completionRule = questionnaire.validationRules?.find(
-                  (rule) =>
-                    rule.isActive && rule.type === "route_completion_limit"
-                );
-
-                if (completionRule && completionRule.enforcement === "block") {
-                  throw new Error(
-                    completionRule.errorMessage ||
-                      "此路線已達到收集上限，無法提交問卷"
-                  );
-                }
-              }
-            }
-
-            console.log("🗺️ Recording route submission:", {
-              routeId: selectedRouteId,
-              routeName,
-              questionnaireId: questionnaire.id,
-            });
-
-            await routeSubmissionService.recordSubmission(
-              user.id,
-              questionnaire.id,
-              response.id,
-              selectedRouteId,
-              routeName
-            );
-
-            console.log("✅ Route submission recorded successfully");
-          }
-        } catch (routeError) {
-          console.error("❌ Error recording route submission:", routeError);
-          // Show error toast for route-related errors
+      // Route tracking removed - questionnaires no longer track routes
           toast({
             title: "❌ 路線提交失敗",
             description:

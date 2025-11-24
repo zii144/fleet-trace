@@ -16,13 +16,14 @@ export type QuestionType =
   | "region-long-answer"
   | "train-schedule-request"
 
-export interface KMLFile {
-  id: string
-  name: string
-  url: string
-  visible?: boolean // Whether to show by default
-  color?: string // Optional color for styling
-}
+// KML files removed - route tracking no longer supported
+// export interface KMLFile {
+//   id: string
+//   name: string
+//   url: string
+//   visible?: boolean // Whether to show by default
+//   color?: string // Optional color for styling
+// }
 
 export interface QuestionValidation {
   min?: number
@@ -56,9 +57,10 @@ export interface MapQuestion {
   validation?: QuestionValidation
   conditional?: QuestionConditional
   type: "map"
-  kmlFiles?: KMLFile[]
-  kmlUrl?: string // Keep for backward compatibility
-  kmlData?: string // Keep for backward compatibility
+  // KML files removed - route tracking no longer supported
+  // kmlFiles?: KMLFile[]
+  // kmlUrl?: string
+  // kmlData?: string
   allowMultipleSelection?: boolean
   defaultCenter?: [number, number] // [lat, lng]
   defaultZoom?: number
@@ -231,30 +233,20 @@ export interface Questionnaire {
   sections: QuestionnaireSection[]
   createdAt: string
   updatedAt: string
-  // Route tracking configuration
-  routeTracking?: {
-    enabled: boolean
-    routeSelectionQuestionId: string // Which question contains route selection
-    trackSubmissionsByRoute: boolean
-  }
+  // Route tracking removed - no longer supported
+  // routeTracking?: {
+  //   enabled: boolean
+  //   routeSelectionQuestionId: string
+  //   trackSubmissionsByRoute: boolean
+  // }
   // Validation rules for submissions
   validationRules?: QuestionnaireValidationRule[]
 }
 
 // Import from route-submission types
 export interface QuestionnaireValidationRule {
-  type: 'route_submission_limit' | 'time_cooldown' | 'user_role_restriction' | 'route_completion_limit'
+  type: 'time_cooldown' | 'user_role_restriction' // Route-related rules removed
   config: {
-    // Route submission limits
-    maxSubmissionsPerRoute?: number
-    allowedRoutes?: string[]
-    routeSelectionQuestionId?: string // e.g., "recent-route"
-    
-    // Route completion limits (new)
-    routeCompletionLimit?: number // Maximum completions per route
-    categoryCompletionLimit?: number // Maximum completions per category
-    enforceCompletionLimit?: boolean // Whether to enforce completion limits
-    
     // Time-based limits
     cooldownPeriod?: number // milliseconds
     maxSubmissionsPerDay?: number

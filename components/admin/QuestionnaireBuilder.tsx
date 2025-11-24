@@ -190,7 +190,8 @@ export function QuestionnaireBuilder({
       (newQuestion as any).scale = ["1", "2", "3", "4", "5"];
     } else if (questionType === "map") {
       (newQuestion as any).options = [];
-      (newQuestion as any).kmlFiles = [];
+      // KML files removed - route tracking no longer supported
+      // (newQuestion as any).kmlFiles = [];
       (newQuestion as any).allowMultipleSelection = false;
     } else if (questionType === "radio-number") {
       (newQuestion as any).options = [

@@ -54,7 +54,6 @@ export const cyclingSurvey2025: QuestionnaireTemplate = {
           defaultCenter: [23.8, 121.0],
           defaultZoom: 7,
           showLayerControl: true,
-          // kmlFiles will be injected dynamically
         },
         {
           id: "recent-route-date",

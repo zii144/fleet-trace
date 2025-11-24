@@ -6,7 +6,6 @@ import { AuthProvider } from "@/components/auth/AuthProvider";
 import UpdateNotification from "@/components/UpdateNotification";
 import { Toaster } from "@/components/ui/toaster";
 import { AppFooter } from "@/components/AppFooter";
-import { DebugUtilsInitializer } from "@/components/DebugUtilsInitializer";
 
 const notoSansTC = Noto_Sans_TC({
   weight: ["400", "500", "700"],
@@ -148,7 +147,7 @@ export default function RootLayout({
         <meta name="msapplication-config" content="/browserconfig.xml" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="msapplication-tap-highlight" content="no" />
-        <link rel="apple-touch-icon" href="/icon-192x192.png" />
+
         <link
           rel="icon"
           type="image/png"
@@ -166,7 +165,7 @@ export default function RootLayout({
       </head>
       <body className="overflow-x-hidden min-h-screen font-sans animated-gradient-background">
         <UpdateNotification />
-        <DebugUtilsInitializer />
+
         <AuthProvider>
           <div className="flex flex-col min-h-screen">
             <main className="flex-1">{children}</main>

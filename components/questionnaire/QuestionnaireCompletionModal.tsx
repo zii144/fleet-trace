@@ -23,7 +23,6 @@ import type {
   Questionnaire,
   QuestionnaireResponse,
 } from "@/types/questionnaire";
-import type { KMLFileConfig } from "@/lib/kml-config";
 
 interface QuestionnaireCompletionModalProps {
   isOpen: boolean;
@@ -79,24 +78,10 @@ export function QuestionnaireCompletionModal({
     }
   };
 
-  // Get route information if available
-  const getRouteInfo = (): KMLFileConfig | null => {
+  // Get route information if available (simplified - no KML files)
+  const getRouteInfo = (): { name: string } | null => {
     if (!selectedRouteName) return null;
-
-    // Find the route in the questionnaire's KML files
-    const routeQuestion = questionnaire.sections
-      .flatMap((section) => section.questions)
-      .find((q) => q.type === "map");
-
-    if (routeQuestion?.kmlFiles) {
-      const route = routeQuestion.kmlFiles.find(
-        (kml) => kml.name === selectedRouteName
-      );
-      // Cast to KMLFileConfig to access description property
-      return (route as KMLFileConfig | undefined) || null;
-    }
-
-    return null;
+    return { name: selectedRouteName };
   };
 
   const routeInfo = getRouteInfo();
@@ -223,11 +208,6 @@ export function QuestionnaireCompletionModal({
                         {routeInfo.name}
                       </span>
                     </div>
-                    {(routeInfo as KMLFileConfig)?.description && (
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        {(routeInfo as KMLFileConfig).description}
-                      </p>
-                    )}
                   </div>
                 </div>
               </CardContent>

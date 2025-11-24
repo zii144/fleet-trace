@@ -23,8 +23,6 @@ import {
   CreditCard,
   Divide,
 } from "lucide-react";
-import { getAllKMLFiles, getKMLFilesByCategory } from "@/lib/kml-config";
-import { routeCompletionService } from "@/lib/services/RouteCompletionService";
 
 interface PromoModalProps {
   isOpen: boolean;
@@ -79,44 +77,8 @@ export function PromoModal({
   const loadQuotaData = async () => {
     setIsLoadingQuota(true);
     try {
-      // Load quota data for all relevant questionnaires
-      const questionnaires = [
-        "cycling-survey-2025",
-        "diverse-cycling-survey-2025",
-      ];
-
-      const allQuotas = [];
-
-      for (const questionnaireId of questionnaires) {
-        try {
-          const categoryQuotas =
-            await routeCompletionService.getCategoryQuotaSummary(
-              questionnaireId
-            );
-          allQuotas.push(...categoryQuotas);
-        } catch (error) {
-          console.error(
-            `Error loading quota data for ${questionnaireId}:`,
-            error
-          );
-        }
-      }
-
-      // Combine quotas by category
-      const combinedQuotas = allQuotas.reduce((acc, quota) => {
-        const existing = acc.find((q) => q.category === quota.category);
-        if (existing) {
-          existing.totalRemaining += quota.totalRemaining;
-          existing.totalLimit += quota.totalLimit;
-          existing.totalCompletions += quota.totalCompletions;
-        } else {
-          acc.push({ ...quota });
-        }
-        return acc;
-      }, [] as any[]);
-
-      setQuotaData(combinedQuotas);
-      console.log("Loaded combined quota data:", combinedQuotas);
+      // Quota data loading removed - no longer using route-based quotas
+      setQuotaData(null);
     } catch (error) {
       console.error("Error loading quota data:", error);
     } finally {
@@ -170,11 +132,7 @@ export function PromoModal({
                   </h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400 text-sm">
-                  全國的《環島自行車路線》 及《多元自行車路線》共
-                  <Badge variant="secondary" className="mx-1">
-                    {getAllKMLFiles().length}線
-                  </Badge>
-                  路線
+                  全國的《環島自行車路線》 及《多元自行車路線》
                 </p>
               </CardContent>
             </Card>
@@ -241,37 +199,9 @@ export function PromoModal({
                     ))}
                   </>
                 ) : (
-                  <>
-                    <p className="text-xs text-gray-600 dark:text-gray-400">
-                      環島自行車路線（環島1號）兌換名額度剩餘
-                      <Badge variant="secondary" className="mx-1">
-                        {getKMLFilesByCategory("round-island-main").length * 70}
-                      </Badge>
-                      份
-                    </p>
-                    <p className="text-xs text-gray-600 dark:text-gray-400">
-                      環島自行車路線（環支線每條35份）兌換名額度剩餘
-                      <Badge variant="secondary" className="mx-1">
-                        {getKMLFilesByCategory("round-island").length * 35}
-                      </Badge>
-                      份
-                    </p>
-                    <p className="text-xs text-gray-600 dark:text-gray-400">
-                      環島自行車路線（替代路線每條35份）兌換名額度剩餘
-                      <Badge variant="secondary" className="mx-1">
-                        {getKMLFilesByCategory("round-island-alternative")
-                          .length * 35}
-                      </Badge>
-                      份
-                    </p>
-                    <p className="text-xs text-gray-600 dark:text-gray-400">
-                      多元自行車路線（每條40份）兌換名額度剩餘
-                      <Badge variant="secondary" className="mx-1">
-                        {getKMLFilesByCategory("diverse").length * 40}
-                      </Badge>
-                      份
-                    </p>
-                  </>
+                  <p className="text-xs text-gray-600 dark:text-gray-400">
+                    載入中...
+                  </p>
                 )}
               </CardContent>
             </Card>

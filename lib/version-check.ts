@@ -5,6 +5,7 @@
 
 export const APP_VERSION = "0.1.0-alpha"; // Current version - Alpha release
 export const VERSION_STORAGE_KEY = "fleet-trace-app-version";
+export const RETURNING_USER_KEY = "fleet-trace-returning-user";
 export const CACHE_KEYS = [
   "fleet-trace-user-info",
   "fleet-trace-questionnaires",
@@ -26,6 +27,31 @@ export const CACHE_KEYS = [
 ];
 
 /**
+ * Check if the user is a returning user (has visited before)
+ */
+export function isReturningUser(): boolean {
+  try {
+    const isReturning = localStorage.getItem(RETURNING_USER_KEY) === "true";
+    return isReturning;
+  } catch (error) {
+    console.warn("⚠️ Returning user check failed:", error);
+    return false;
+  }
+}
+
+/**
+ * Mark the user as a returning user
+ */
+export function markAsReturningUser(): void {
+  try {
+    localStorage.setItem(RETURNING_USER_KEY, "true");
+    console.log("✅ User marked as returning user");
+  } catch (error) {
+    console.warn("⚠️ Failed to mark user as returning:", error);
+  }
+}
+
+/**
  * Check if the app version has changed and cache needs to be cleared
  */
 export function checkAppVersion(): {
@@ -40,11 +66,13 @@ export function checkAppVersion(): {
     console.log("🔍 Version Check:", {
       current: currentVersion,
       cached: cachedVersion,
-      needsUpdate: cachedVersion !== currentVersion,
+      needsUpdate: cachedVersion !== currentVersion && cachedVersion !== null,
     });
 
+    // Only needs update if there's a cached version that differs from current
+    // New users (cachedVersion === null) don't need updates
     return {
-      needsUpdate: cachedVersion !== currentVersion,
+      needsUpdate: cachedVersion !== null && cachedVersion !== currentVersion,
       currentVersion,
       cachedVersion,
     };
@@ -172,6 +200,9 @@ export function clearAppCache(): void {
 
     // Update version in storage
     localStorage.setItem(VERSION_STORAGE_KEY, APP_VERSION);
+
+    // Mark user as returning after successful upgrade
+    markAsReturningUser();
 
     console.log(
       "✅ Comprehensive app cache cleared successfully for version upgrade"

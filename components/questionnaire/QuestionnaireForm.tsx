@@ -555,20 +555,6 @@ export function QuestionnaireForm({ questionnaire }: QuestionnaireFormProps) {
       // Submit the questionnaire response first
       await submitQuestionnaireResponse(user.id, response);
 
-      // Route tracking removed - questionnaires no longer track routes
-          toast({
-            title: "❌ 路線提交失敗",
-            description:
-              routeError instanceof Error
-                ? routeError.message
-                : "提交路線時發生錯誤",
-            variant: "destructive",
-            duration: 5000,
-          });
-          // Don't fail the entire submission if route tracking fails
-        }
-      }
-
       // Store the completed response and show completion modal
       setCompletedResponse(response);
       setShowCompletionModal(true);

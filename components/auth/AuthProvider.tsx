@@ -9,6 +9,7 @@ import {
   type User,
 } from "@/lib/firebase-auth";
 import { SessionManager } from "@/lib/session-manager";
+import { markAsReturningUser } from "@/lib/version-check";
 
 interface AuthContextType {
   user: User | null;
@@ -57,6 +58,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         role: user?.role,
       });
 
+      // Mark user as returning if they have an existing session
+      if (user) {
+        markAsReturningUser();
+      }
+
       setUser(user);
       setIsLoading(false);
       clearTimeout(timeoutId); // Clear timeout when auth state is resolved
@@ -85,6 +91,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (authenticatedUser) {
         console.log("✅ AuthProvider: Login successful, setting user state");
         console.log("👤 AuthProvider: User object:", authenticatedUser);
+        // Mark user as returning after successful login
+        markAsReturningUser();
         setUser(authenticatedUser);
         setHasRememberMeSession(rememberMe);
         return true;

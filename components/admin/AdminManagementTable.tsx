@@ -131,7 +131,7 @@ const tableConfigs: TableConfig[] = [
   {
     name: "questionnaire_responses",
     collection: "questionnaire_responses",
-    displayName: "問卷回應",
+    displayName: "評鑑調查回應",
     icon: <Eye className="w-4 h-4" />,
     columns: [
       { key: "documentId", label: "FireStore ID", type: "text" },
@@ -162,7 +162,7 @@ const tableConfigs: TableConfig[] = [
   {
     name: "questionnaires",
     collection: "questionnaires",
-    displayName: "問卷回應",
+    displayName: "評鑑調查回應",
     icon: <Edit className="w-4 h-4" />,
     columns: [
       { key: "title", label: "標題", type: "text", editable: true },
@@ -625,8 +625,8 @@ export function AdminManagementTable({ userRole }: AdminManagementTableProps) {
                         {(() => {
                           const collectionNameMap: { [key: string]: string } = {
                             users: "用戶",
-                            questionnaires: "問卷",
-                            questionnaire_responses: "問卷回應",
+                            questionnaires: "評鑑調查",
+                            questionnaire_responses: "評鑑調查回應",
                             user_stats: "用戶統計",
                             // Add more mappings as needed
                           };
@@ -721,7 +721,7 @@ export function AdminManagementTable({ userRole }: AdminManagementTableProps) {
                               colSpan={config.columns.length + 1}
                               className="text-center"
                             >
-                              雲端問卷功能持續開發中
+                              雲端評鑑調查功能持續開發中
                             </TableCell>
                           </TableRow>
                         ) : (

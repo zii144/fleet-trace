@@ -38,7 +38,7 @@ export function SubmissionHistory({ submissions }: SubmissionHistoryProps) {
           <h3 className="text-lg font-semibold text-gray-900 mb-2">
             尚無提交記錄
           </h3>
-          <p className="text-gray-600">開始填寫問卷來查看您的提交歷史</p>
+          <p className="text-gray-600">開始填寫評鑑調查來查看您的提交歷史</p>
         </CardContent>
       </Card>
     );
@@ -84,7 +84,7 @@ export function SubmissionHistory({ submissions }: SubmissionHistoryProps) {
                 </span>
               </div>
               <div>
-                <span className="font-medium text-gray-700">問卷ID：</span>
+                <span className="font-medium text-gray-700">評鑑調查ID：</span>
                 <span className="text-gray-600 font-mono text-xs">
                   {submission.questionnaireId}
                 </span>

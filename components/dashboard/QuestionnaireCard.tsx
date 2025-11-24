@@ -190,20 +190,21 @@ export function QuestionnaireCard({ questionnaire }: QuestionnaireCardProps) {
         )}
 
         {/* Show repeatable status for questionnaires that are repeatable (exclude taxi surveys) */}
-        {questionnaire.isRepeatable && !questionnaire.id.includes("-taxi-service-quality-survey") && (
-          <div className="mb-4">
-            <Alert className="border-yellow-200 bg-yellow-50 dark:border-yellow-800 dark:bg-yellow-950">
-              <div className="flex items-center gap-2">
-                <AlertDescription className="text-sm text-yellow-700 dark:text-yellow-300">
-                  <div className="font-medium mb-1">
-                    本問卷可以重複填寫，且每條路線只能填寫一次，完成後將自動列入
-                    <b>「路線回饋」</b>資料；詳情請參閱<b>「獎勵活動」</b>頁面
-                  </div>
-                </AlertDescription>
-              </div>
-            </Alert>
-          </div>
-        )}
+        {questionnaire.isRepeatable &&
+          !questionnaire.id.includes("-taxi-service-quality-survey") && (
+            <div className="mb-4">
+              <Alert className="border-yellow-200 bg-yellow-50 dark:border-yellow-800 dark:bg-yellow-950">
+                <div className="flex items-center gap-2">
+                  <AlertDescription className="text-sm text-yellow-700 dark:text-yellow-300">
+                    <div className="font-medium mb-1">
+                      本評鑑調查可以重複填寫，且每條路線只能填寫一次，完成後將自動列入
+                      <b>「路線回饋」</b>資料；詳情請參閱<b>「獎勵活動」</b>頁面
+                    </div>
+                  </AlertDescription>
+                </div>
+              </Alert>
+            </div>
+          )}
 
         <div className="mt-auto">
           {isDisabled ? (
@@ -223,7 +224,7 @@ export function QuestionnaireCard({ questionnaire }: QuestionnaireCardProps) {
               ) : (
                 <>
                   <Lock className="w-4 h-4 mr-2" />
-                  需要完成前置評鑑調查
+                  目前本評鑑調查尚未開放
                 </>
               )}
             </Button>

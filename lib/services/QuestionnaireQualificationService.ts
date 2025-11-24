@@ -25,19 +25,19 @@ export class QuestionnaireQualificationService {
   private readonly QUALIFICATION_RULES: QuestionnaireQualification[] = [
     {
       id: "cycling-survey-2025",
-      title: "「多元自行車路線」使用情形及滿意度問卷",
+      title: "「多元自行車路線」使用情形及滿意度評鑑調查",
       prerequisites: ["self-info-survey"],
       requiresEmailVerification: true,
     },
     {
       id: "diverse-cycling-survey-2025",
-      title: "「環島自行車路線」使用情形及滿意度問卷",
+      title: "「環島自行車路線」使用情形及滿意度評鑑調查",
       prerequisites: ["self-info-survey"],
       requiresEmailVerification: true,
     },
     {
       id: "self-info-survey",
-      title: "使用者基本資料收集問卷",
+      title: "使用者基本資料收集評鑑調查",
       prerequisites: [],
       disableWhenCompleted: true, // This questionnaire should be disabled when completed
       requiresEmailVerification: true,
@@ -76,9 +76,9 @@ export class QuestionnaireQualificationService {
 
   // Map questionnaire IDs to human-readable names
   private readonly QUESTIONNAIRE_NAMES: Record<string, string> = {
-    "self-info-survey": "使用者基本資料收集問卷",
-    "cycling-survey-2025": "「多元自行車路線」使用情形及滿意度問卷",
-    "diverse-cycling-survey-2025": "「環島自行車路線」使用情形及滿意度問卷",
+    "self-info-survey": "使用者基本資料收集評鑑調查",
+    "cycling-survey-2025": "「多元自行車路線」使用情形及滿意度評鑑調查",
+    "diverse-cycling-survey-2025": "「環島自行車路線」使用情形及滿意度評鑑調查",
     "taipei-taxi-service-quality-survey": "臺北市計程車服務品質評鑑調查",
     "new-taipei-taxi-service-quality-survey": "新北市計程車服務品質評鑑調查",
     "taoyuan-taxi-service-quality-survey": "桃園市計程車服務品質評鑑調查",
@@ -165,7 +165,7 @@ export class QuestionnaireQualificationService {
         completedPrerequisites,
         missingPrerequisites,
         isDisabled,
-        disableReason: isDisabled ? "已完成此問卷" : undefined,
+        disableReason: isDisabled ? "已完成此評鑑調查" : undefined,
         emailVerified,
       });
 
@@ -174,7 +174,7 @@ export class QuestionnaireQualificationService {
         missingPrerequisites,
         completedPrerequisites,
         isDisabled,
-        disableReason: isDisabled ? "已完成此問卷" : undefined,
+        disableReason: isDisabled ? "已完成此評鑑調查" : undefined,
         emailVerified,
       };
     } catch (error) {

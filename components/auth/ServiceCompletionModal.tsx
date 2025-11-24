@@ -56,7 +56,7 @@ export function ServiceCompletionModal({
             </h3>
 
             <p className="text-gray-700 leading-relaxed mb-4">
-              感謝您對乘跡平台的支持與參與！我們的問卷調查活動已經成功完成，
+              感謝您對乘跡平台的支持與參與！我們的評鑑調查活動已經成功完成，
               目前系統暫時停止服務以進行數據整理與分析。
             </p>
 

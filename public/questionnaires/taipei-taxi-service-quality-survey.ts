@@ -4,7 +4,7 @@ export const taipeiTaxiServiceQualitySurvey: QuestionnaireTemplate = {
   id: "taipei-taxi-service-quality-survey",
   title: "臺北市計程車服務品質評鑑調查",
   description:
-    "本問卷目的在了解您對臺北市計程車服務品質的感受及意見，做為後續服務改善參考，謝謝！",
+    "本評鑑調查目的在了解您對臺北市計程車服務品質的感受及意見，做為後續服務改善參考，謝謝！",
   banner: "/banner-video/cycling-survey.mp4", // Default banner, can be updated later
   version: "1.0.0",
   organize: "臺北市政府",

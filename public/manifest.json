@@ -1,7 +1,7 @@
 {
-  "name": "問卷調查平台",
-  "short_name": "問卷平台",
-  "description": "模組化問卷調查平台 v0.1.0-alpha",
+  "name": "評鑑調查平台",
+  "short_name": "評鑑調查平台",
+  "description": "模組化評鑑調查平台 v0.1.0-alpha",
   "version": "0.1.0-alpha",
   "start_url": "/",
   "display": "standalone",

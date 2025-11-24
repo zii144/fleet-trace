@@ -177,7 +177,7 @@ export default function ProfilePage() {
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">會員資訊</h1>
-                <p className="text-gray-600 mt-2">查看您的問卷統計和歷史記錄</p>
+                <p className="text-gray-600 mt-2">查看您的評鑑調查統計和歷史記錄</p>
               </div>
               <div className="flex items-center space-x-2">
                 <Button
@@ -262,10 +262,10 @@ export default function ProfilePage() {
           {/* 
             <div>
             <h2 className="text-xl font-semibold text-gray-900">
-              問卷紀錄簡報
+              評鑑調查紀錄簡報
             </h2>
             <p className="text-gray-600 mt-2">
-              以下顯示您最近 5 筆問卷的填寫紀錄
+              以下顯示您最近 5 筆評鑑調查的填寫紀錄
             </p>
             </div>
             */}

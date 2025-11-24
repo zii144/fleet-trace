@@ -138,7 +138,7 @@ export function QuestionnaireCompletionModal({
               }`}
             >
               <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                問卷完成！
+                評鑑調查完成！
               </DialogTitle>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                 感謝您的參與，您的意見對我們非常重要

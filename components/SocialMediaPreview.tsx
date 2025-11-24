@@ -19,7 +19,7 @@ interface SocialMediaPreviewProps {
 
 export function SocialMediaPreview({
   defaultTitle = "乘跡｜計程車服務品質評核平台",
-  defaultDescription = "乘跡，計程車服務品質評核平台。結合數據分析與問卷回饋，提升計程車服務品質。",
+  defaultDescription = "乘跡，計程車服務品質評核平台。結合數據分析與評鑑調查回饋，提升計程車服務品質。",
   defaultImage = "/social-share-banner.png",
   defaultUrl = "https://bike-life.net",
 }: SocialMediaPreviewProps) {

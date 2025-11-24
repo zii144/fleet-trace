@@ -299,7 +299,7 @@ export function QuestionnaireResponseManager() {
       }
     } catch (err) {
       console.error("Error loading questionnaires:", err);
-      setError("加載問卷失敗");
+      setError("加載評鑑調查失敗");
     }
   };
 
@@ -588,26 +588,26 @@ export function QuestionnaireResponseManager() {
   return (
     <div className="container mx-auto p-0">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold mb-2">問卷回應管理</h1>
-        <p className="text-muted-foreground">查看和分析問卷回應資料</p>
+        <h1 className="text-2xl font-bold mb-2">評鑑調查回應管理</h1>
+        <p className="text-muted-foreground">查看和分析評鑑調查回應資料</p>
       </div>
 
       {/* Questionnaire Selection */}
       <Card className="mb-6">
         <CardHeader>
-          <CardTitle>選擇問卷</CardTitle>
-          <CardDescription>選擇要查看的問卷回應</CardDescription>
+          <CardTitle>選擇評鑑調查</CardTitle>
+          <CardDescription>選擇要查看的評鑑調查回應</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex items-center space-x-4">
             <div className="flex-1">
-              <Label htmlFor="questionnaire-select">問卷</Label>
+              <Label htmlFor="questionnaire-select">評鑑調查</Label>
               <Select
                 value={selectedQuestionnaireId}
                 onValueChange={setSelectedQuestionnaireId}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="選擇問卷" />
+                  <SelectValue placeholder="選擇評鑑調查" />
                 </SelectTrigger>
                 <SelectContent>
                   {questionnaires.map((questionnaire) => (
@@ -699,7 +699,7 @@ export function QuestionnaireResponseManager() {
             <div className="lg:col-span-1">
               <Card className="h-fit">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg">問卷欄位</CardTitle>
+                  <CardTitle className="text-lg">評鑑調查欄位</CardTitle>
                   <CardDescription>選擇要查看的欄位資料</CardDescription>
                 </CardHeader>
 

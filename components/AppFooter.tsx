@@ -66,7 +66,7 @@ export function AppFooter({
             )}
 
             <p className="text-xs text-muted-foreground leading-relaxed">
-              計程車服務品質評核平台，結合數據分析與問卷回饋，
+              計程車服務品質評核平台，結合數據分析與評鑑調查回饋，
               提升計程車服務品質。
             </p>
           </div>

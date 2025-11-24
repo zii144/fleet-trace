@@ -475,10 +475,10 @@ export class QuestionnaireService {
   private async getQuestionnaireName(questionnaireId: string): Promise<string> {
     try {
       const questionnaire = await this.getQuestionnaire(questionnaireId)
-      return questionnaire?.title || `問卷 ${questionnaireId}`
+      return questionnaire?.title || `評鑑調查 ${questionnaireId}`
     } catch (error) {
       console.error('❌ Error fetching questionnaire name:', error)
-      return `問卷 ${questionnaireId}`
+      return `評鑑調查 ${questionnaireId}`
     }
   }
 

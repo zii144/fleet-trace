@@ -45,19 +45,19 @@ export function PromoModal({
     {
       icon: <Users className="w-5 h-5" />,
       title: "建立個人資料",
-      description: "點選個人資料問卷進行填寫",
+      description: "點選個人資料評鑑調查進行填寫",
       action: "完成個人檔案設定",
     },
     {
       icon: <Bike className="w-5 h-5" />,
       title: "填寫兩鐵使用經驗",
-      description: "於個人資料問卷填寫兩鐵使用經驗",
+      description: "於個人資料評鑑調查填寫兩鐵使用經驗",
       action: "分享騎乘體驗",
     },
     {
       icon: <MapPin className="w-5 h-5" />,
       title: "選擇路線回饋",
-      description: "點選多元自行車路線或環島自行車路線問卷進行填寫",
+      description: "點選多元自行車路線或環島自行車路線評鑑調查進行填寫",
       action: "提供路線評價",
     },
   ];

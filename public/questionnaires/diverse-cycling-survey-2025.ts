@@ -2,9 +2,9 @@ import type { QuestionnaireTemplate } from "./types"
 
 export const diverseCyclingSurvey2025: QuestionnaireTemplate = {
   id: "diverse-cycling-survey-2025",
-  title: "「多元自行車路線」使用情形及滿意度問卷",
+  title: "「多元自行車路線」使用情形及滿意度評鑑調查",
   description:
-    "本問卷目的在了解您曾經騎乘或本次騎乘「多元自行車路線」的感受及意見，做為後續路線規劃及改善參考，謝謝！",
+    "本評鑑調查目的在了解您曾經騎乘或本次騎乘「多元自行車路線」的感受及意見，做為後續路線規劃及改善參考，謝謝！",
   banner: "/banner-video/diverse-cycling-survey.mp4", // !! Video
   version: "1.0.0",
   organize: "交通部運輸研究所",
@@ -26,7 +26,7 @@ export const diverseCyclingSurvey2025: QuestionnaireTemplate = {
         routeSelectionQuestionId: "recent-route"
       },
       enforcement: 'hide', // Allow but warn for diverse routes
-      errorMessage: '您已經填寫過此路線的問卷',
+      errorMessage: '您已經填寫過此路線的評鑑調查',
       warningMessage: '您已經填寫過此路線，確定要再次填寫嗎？',
       isActive: true
     },

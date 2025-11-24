@@ -96,7 +96,7 @@ export function QuestionnaireForm({ questionnaire }: QuestionnaireFormProps) {
     );
     return (
       <div className="text-center py-12">
-        <p className="text-gray-600">問卷資料載入中或無效...</p>
+        <p className="text-gray-600">評鑑調查資料載入中或無效...</p>
       </div>
     );
   }
@@ -562,7 +562,7 @@ export function QuestionnaireForm({ questionnaire }: QuestionnaireFormProps) {
       // Show success toast
       toast({
         title: "🎉 提交成功",
-        description: "問卷已成功提交，感謝您的參與！",
+        description: "評鑑調查已成功提交，感謝您的參與！",
         duration: 3000,
       });
     } catch (error) {
@@ -571,7 +571,7 @@ export function QuestionnaireForm({ questionnaire }: QuestionnaireFormProps) {
       // Show error toast
       toast({
         title: "❌ 提交失敗",
-        description: "提交問卷時發生錯誤，請稍後再試",
+        description: "提交評鑑調查時發生錯誤，請稍後再試",
         variant: "destructive",
         duration: 5000,
       });
@@ -745,7 +745,7 @@ export function QuestionnaireForm({ questionnaire }: QuestionnaireFormProps) {
       {willEndEarly && (
         <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
           <p className="text-sm text-blue-800">
-            感謝您的回答！由於您未曾使用兩鐵列車服務，問卷將在此結束。
+            感謝您的回答！由於您未曾使用兩鐵列車服務，評鑑調查將在此結束。
           </p>
         </div>
       )}

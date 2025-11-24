@@ -62,7 +62,7 @@ export function PWAInstallPrompt() {
             <X className="h-4 w-4" />
           </Button>
         </div>
-        <CardDescription>將問卷平台安裝到您的裝置以獲得更好的體驗</CardDescription>
+        <CardDescription>將評鑑調查平台安裝到您的裝置以獲得更好的體驗</CardDescription>
       </CardHeader>
       <CardContent className="pt-0">
         <Button onClick={handleInstallClick} className="w-full">

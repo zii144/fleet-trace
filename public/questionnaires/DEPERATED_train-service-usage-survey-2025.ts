@@ -2,8 +2,8 @@ import type { QuestionnaireTemplate } from "./types"
 
 export const trainServiceUsageSurvey2025: QuestionnaireTemplate = {
     id: "train-service-usage-survey-2025",
-    title: "「兩鐵列車服務」整體性使用情況調查問卷",
-    description: "本問卷旨在收集使用兩鐵列車服務的乘客對於服務質素、設施、班次等方面的意見和建議，以便進一步提升服務質素。",
+    title: "「兩鐵列車服務」整體性使用情況調查評鑑調查",
+    description: "本評鑑調查旨在收集使用兩鐵列車服務的乘客對於服務質素、設施、班次等方面的意見和建議，以便進一步提升服務質素。",
     version: "1.0.0",
     organize: "交通部運輸研究所",
     createdAt: "2025-07-20",

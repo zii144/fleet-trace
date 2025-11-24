@@ -60,7 +60,7 @@ export default function QualificationTestPage() {
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 請先登入
               </h3>
-              <p className="text-gray-600">需要登入才能測試問卷資格檢查功能</p>
+              <p className="text-gray-600">需要登入才能測試評鑑調查資格檢查功能</p>
             </CardContent>
           </Card>
         </div>
@@ -73,9 +73,9 @@ export default function QualificationTestPage() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            問卷資格檢查測試
+            評鑑調查資格檢查測試
           </h1>
-          <p className="text-gray-600">測試用戶問卷參與資格檢查系統</p>
+          <p className="text-gray-600">測試用戶評鑑調查參與資格檢查系統</p>
         </div>
 
         {/* User Info */}
@@ -124,7 +124,7 @@ export default function QualificationTestPage() {
                 <div key={rule.id} className="border rounded-lg p-4">
                   <h3 className="font-medium mb-2">{rule.title}</h3>
                   <p className="text-sm text-gray-600 mb-2">
-                    問卷 ID: {rule.id}
+                    評鑑調查 ID: {rule.id}
                   </p>
                   {rule.prerequisites.length > 0 ? (
                     <div>
@@ -227,7 +227,7 @@ export default function QualificationTestPage() {
                       </CardHeader>
                       <CardContent>
                         <p className="text-sm text-gray-600 mb-3">
-                          問卷 ID:{" "}
+                          評鑑調查 ID:{" "}
                           <code className="bg-gray-100 px-1 rounded">
                             {questionnaireId}
                           </code>
@@ -291,7 +291,7 @@ export default function QualificationTestPage() {
                           <Alert className="border-blue-200 bg-blue-50">
                             <FileText className="h-4 w-4 text-blue-600" />
                             <AlertDescription className="text-sm text-blue-700">
-                              此問卷無前置條件，隨時可以參與
+                              此評鑑調查無前置條件，隨時可以參與
                             </AlertDescription>
                           </Alert>
                         )}

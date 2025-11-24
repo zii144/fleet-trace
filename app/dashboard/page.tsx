@@ -190,7 +190,7 @@ export default function DashboardPage() {
                       : "opacity-0 translate-y-8"
                   }`}
                 >
-                  繼續您的騎行體驗分享之旅
+                  填寫評鑑調查
                 </p>
               </div>
             </div>
